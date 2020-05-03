@@ -1,11 +1,10 @@
-const plantsURL = `http://localhost:3000/plants`
 const flashcardsURL = `http://localhost:3000/flashcards`
 const body = document.querySelector("body")
 
 fetch(flashcardsURL)
     .then(r => r.json())
     .then((flashcardsArr) => {
-        renderFrontFlashcard(flashcardsArr[0])
+        renderFrontFlashcard(flashcardsArr[4])
     })
 
 function renderFrontFlashcard(flash) {
@@ -20,8 +19,20 @@ function createCardContainer() {
     let innerCard = document.createElement("div")
     innerCard.classList.add("flip-card-inner")
 
+    let buttonGroup = document.createElement("div")
+    buttonGroup.classList.add("btn-group")
+
+    let nextButton = document.createElement("button")
+    nextButton.classList.add("navigation")
+    nextButton.innerText = "Next card"
+
+    let backButton = document.createElement("button")
+    backButton.classList.add("navigation")
+    backButton.innerText = "Previous card"
+
     body.append(flashcardContainer)
-    flashcardContainer.append(innerCard)
+    buttonGroup.append(backButton, nextButton)
+    flashcardContainer.append(innerCard, buttonGroup)
 }
 
 function frontCardInfo(flash) {

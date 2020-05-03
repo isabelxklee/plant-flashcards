@@ -4,12 +4,6 @@
     border-radius: 5px;
     width: 250px;
     height: 350px;
-    perspective: 1000px;
-}
-
-.flip-card-inner img {
-    width: 100%;
-    border-radius: 5px 5px 0 0;
 }
 
 .flip-card-inner {
@@ -18,21 +12,35 @@
     height: 100%;
     text-align: center;
     transition: transform 0.6s;
-    transform-style: preserve-3d;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     font-family: 'Ringside Wide';
 }
 
-.flip-card-front, .flip-card-back {
+.flip-card-inner img {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+}
+
+.flip-card-front {
     width: 100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
 }
 
 .flip-card-back {
-    transform: rotateY(180deg);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: inline-block;
 }
 
-.flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
+.title {
+    padding-top: 75px;
+    margin-bottom: 0px;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.content {
+    font-size: 22px;
 }

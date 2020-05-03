@@ -30,19 +30,21 @@ function renderFrontFlashcard(flash) {
     innerCard.append(plantImage, plantName)
     flashcardContainer.append(innerCard)
 
-    renderBackFlashcard(flash)
-}
+    innerCard.addEventListener("click", (event) => {
+        console.log(event.target)
 
-function renderBackFlashcard(flash) {
-    let innerCard = body.querySelector(".flip-card-inner")
+        innerCard.innerHTML = ""
 
-    let factTitle = document.createElement("h4")
-    factTitle.classList.add("flip-card-back")
-    factTitle.innerText = flash.fact_title
+        let factTitle = document.createElement("h4")
+        factTitle.classList.add("flip-card-back", "title")
+        factTitle.innerText = flash.fact_title
 
-    let factContent = document.createElement("p")
-    factContent.classList.add("flip-card-back")
-    factContent.innerText = flash.fact_content
+        let factContent = document.createElement("p")
+        factContent.classList.add("flip-card-back", "content")
+        factContent.innerText = flash.fact_content
 
-    innerCard.append(factTitle, factContent)
+        innerCard.append(factTitle, factContent)
+
+        console.log(factTitle, factContent)
+    })
 }

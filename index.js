@@ -6,11 +6,45 @@ fetch(flashcardsURL)
     .then((flashcardsArr) => {
         createCardContainer(flashcardsArr)
         renderFrontFlashcard(flashcardsArr[0])
-        navigationActions(flashcardsArr)
     })
 
 function renderFrontFlashcard(flash) {
     frontCardInfo(flash)
+}
+
+function createCardContainer(flashcardsArr) {
+    let header = document.createElement("h1")
+    header.innerText = "Click on the card to flip it."
+
+    let cardCount = document.createElement("p")
+    cardCount.classList.add("content")
+    cardCount.id = "card-count"
+    cardCount.innerText = `1 / ${flashcardsArr.length} cards`
+
+    let flashcardContainer = document.createElement("div")
+    flashcardContainer.classList.add("flip-card")
+
+    let innerCard = document.createElement("div")
+    innerCard.classList.add("flip-card-inner")
+
+    let buttonGroup = document.createElement("div")
+    buttonGroup.classList.add("btn-group")
+
+    let nextButton = document.createElement("button")
+    nextButton.classList.add("navigation")
+    nextButton.id = "next-button"
+    nextButton.innerText = "Next card"
+
+    let backButton = document.createElement("button")
+    backButton.classList.add("navigation")
+    backButton.id = "back-button"
+    backButton.innerText = "Previous card"
+
+    body.append(header, flashcardContainer)
+    buttonGroup.append(backButton, nextButton)
+    flashcardContainer.append(innerCard, cardCount, buttonGroup)
+
+    navigationActions(flashcardsArr)
 }
 
 function navigationActions(flashcardsArr) {
@@ -47,39 +81,6 @@ function navigationActions(flashcardsArr) {
     })
 }
 
-function createCardContainer(flashcardsArr) {
-    let header = document.createElement("h1")
-    header.innerText = "Click on the card to flip it."
-
-    let cardCount = document.createElement("p")
-    cardCount.classList.add("content")
-    cardCount.id = "card-count"
-    cardCount.innerText = `1 / ${flashcardsArr.length} cards`
-
-    let flashcardContainer = document.createElement("div")
-    flashcardContainer.classList.add("flip-card")
-
-    let innerCard = document.createElement("div")
-    innerCard.classList.add("flip-card-inner")
-
-    let buttonGroup = document.createElement("div")
-    buttonGroup.classList.add("btn-group")
-
-    let nextButton = document.createElement("button")
-    nextButton.classList.add("navigation")
-    nextButton.id = "next-button"
-    nextButton.innerText = "Next card"
-
-    let backButton = document.createElement("button")
-    backButton.classList.add("navigation")
-    backButton.id = "back-button"
-    backButton.innerText = "Previous card"
-
-    body.append(header, flashcardContainer)
-    buttonGroup.append(backButton, nextButton)
-    flashcardContainer.append(innerCard, cardCount, buttonGroup)
-}
-
 function frontCardInfo(flash) {
     let plantImage = document.createElement("img")
     plantImage.classList.add("flip-card-front")
@@ -91,6 +92,8 @@ function frontCardInfo(flash) {
 
     let flashcardContainer = body.querySelector(".flip-card")
     let innerCard = flashcardContainer.querySelector(".flip-card-inner")
+
+    innerCard.innerHTML = ""
 
     innerCard.append(plantImage, plantName)
 

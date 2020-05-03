@@ -56,18 +56,18 @@ function navigationActions(flashcardsArr) {
     let indexPosition = 0
 
     nextButton.addEventListener("click", (event) => {
-        console.log(event.target)
-
-        indexPosition = indexPosition + 1
-        renderFrontFlashcard(flashcardsArr[indexPosition])
-        cardCount.innerText = `${indexPosition + 1} / ${flashcardsArr.length} cards`
-
-        console.log(`Index position: ${indexPosition}`)
+        if (indexPosition + 1 === flashcardsArr.length) {
+            console.log("This is the end.")
+        } else {
+            indexPosition = indexPosition + 1
+            renderFrontFlashcard(flashcardsArr[indexPosition])
+            cardCount.innerText = `${indexPosition + 1} / ${flashcardsArr.length} cards`
+    
+            console.log(`Index position: ${indexPosition}`)
+        }
     })
 
     backButton.addEventListener("click", (event) => {
-        console.log(event.target)
-
         if (indexPosition === 0) {
             cardCount.innerText = `1 / ${flashcardsArr.length} cards`
             console.log(`Index position: ${indexPosition}`)

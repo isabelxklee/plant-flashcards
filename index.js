@@ -4,15 +4,22 @@ const body = document.querySelector("body")
 fetch(flashcardsURL)
     .then(r => r.json())
     .then((flashcardsArr) => {
-        renderFrontFlashcard(flashcardsArr[4])
+        createCardContainer(flashcardsArr)
+        renderFrontFlashcard(flashcardsArr[0])
     })
 
 function renderFrontFlashcard(flash) {
-    createCardContainer()
     frontCardInfo(flash)
 }
 
-function createCardContainer() {
+function createCardContainer(flashcardsArr) {
+    let header = document.createElement("h1")
+    header.innerText = "Click on the card to flip it."
+
+    let cardCount = document.createElement("p")
+    cardCount.classList.add("content")
+    cardCount.innerText = `1 / ${flashcardsArr.length} cards`
+
     let flashcardContainer = document.createElement("div")
     flashcardContainer.classList.add("flip-card")
 
@@ -30,9 +37,9 @@ function createCardContainer() {
     backButton.classList.add("navigation")
     backButton.innerText = "Previous card"
 
-    body.append(flashcardContainer)
+    body.append(header, flashcardContainer)
     buttonGroup.append(backButton, nextButton)
-    flashcardContainer.append(innerCard, buttonGroup)
+    flashcardContainer.append(innerCard, cardCount, buttonGroup)
 }
 
 function frontCardInfo(flash) {

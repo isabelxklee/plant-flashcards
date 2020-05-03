@@ -37,7 +37,7 @@ button.navigation {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    margin: 30px 5px;
+    margin: 4px 4px;
     transition-duration: 0.4s;
     cursor: pointer;
     float: left;
@@ -48,6 +48,16 @@ button.navigation:hover {
     border: none;
 }
 
+h1 {
+    font-size: 32px;
+    margin-top: 60px;
+    margin-left: 25%;
+}
+
+h2 {
+    font-size: 24px;
+}
+
 .flip-card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
@@ -55,8 +65,8 @@ button.navigation:hover {
     width: 250px;
     height: 350px;
     margin-left: 25%;
-    margin-top: 100px;
-    vertical-align: center;
+    margin-top: 40px;
+    vertical-align: center;;
 }
 
 .flip-card-inner {
@@ -85,6 +95,10 @@ button.navigation:hover {
     display: inline-block;
 }
 
+p.flip-card-back.content {
+    font-size: 24px
+}
+
 .title {
     padding-top: 75px;
     margin-bottom: 0px;
@@ -94,8 +108,10 @@ button.navigation:hover {
     letter-spacing: 2px;
 }
 
-.content {
-    font-size: 22px;
+p.content {
+    text-align: center;
+    font-size: 16px;
+    padding-top: 3%;
     padding-left: 10%;
     padding-right: 10%;
 }

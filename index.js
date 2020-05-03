@@ -6,10 +6,45 @@ fetch(flashcardsURL)
     .then((flashcardsArr) => {
         createCardContainer(flashcardsArr)
         renderFrontFlashcard(flashcardsArr[0])
+        navigationActions(flashcardsArr)
     })
 
 function renderFrontFlashcard(flash) {
     frontCardInfo(flash)
+}
+
+function navigationActions(flashcardsArr) {
+    let flashcardContainer = body.querySelector(".flip-card")
+    let nextButton = flashcardContainer.querySelector("#next-button")
+    let backButton = flashcardContainer.querySelector("#back-button")
+    let cardCount = flashcardContainer.querySelector("#card-count")
+
+    let indexPosition = 0
+
+    nextButton.addEventListener("click", (event) => {
+        console.log(event.target)
+
+        indexPosition = indexPosition + 1
+        renderFrontFlashcard(flashcardsArr[indexPosition])
+        cardCount.innerText = `${indexPosition + 1} / ${flashcardsArr.length} cards`
+
+        console.log(`Index position: ${indexPosition}`)
+    })
+
+    backButton.addEventListener("click", (event) => {
+        console.log(event.target)
+
+        if (indexPosition === 0) {
+            cardCount.innerText = `1 / ${flashcardsArr.length} cards`
+            console.log(`Index position: ${indexPosition}`)
+        } else if (indexPosition > 0) {
+            indexPosition = indexPosition - 1
+            renderFrontFlashcard(flashcardsArr[indexPosition])
+            cardCount.innerText = `${indexPosition + 1} / ${flashcardsArr.length} cards`
+
+            console.log(`Index position: ${indexPosition}`)
+        }
+    })
 }
 
 function createCardContainer(flashcardsArr) {
@@ -18,6 +53,7 @@ function createCardContainer(flashcardsArr) {
 
     let cardCount = document.createElement("p")
     cardCount.classList.add("content")
+    cardCount.id = "card-count"
     cardCount.innerText = `1 / ${flashcardsArr.length} cards`
 
     let flashcardContainer = document.createElement("div")
@@ -31,10 +67,12 @@ function createCardContainer(flashcardsArr) {
 
     let nextButton = document.createElement("button")
     nextButton.classList.add("navigation")
+    nextButton.id = "next-button"
     nextButton.innerText = "Next card"
 
     let backButton = document.createElement("button")
     backButton.classList.add("navigation")
+    backButton.id = "back-button"
     backButton.innerText = "Previous card"
 
     body.append(header, flashcardContainer)

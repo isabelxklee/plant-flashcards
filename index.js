@@ -55,30 +55,69 @@ function navigationActions(flashcardsArr) {
 
     let indexPosition = 0
 
-    nextButton.addEventListener("click", (event) => {
-        if (indexPosition + 1 === flashcardsArr.length) {
-            console.log("This is the end.")
-        } else {
-            indexPosition = indexPosition + 1
-            renderFrontFlashcard(flashcardsArr[indexPosition])
-            cardCount.innerText = `${indexPosition + 1} / ${flashcardsArr.length} cards`
-    
-            console.log(`Index position: ${indexPosition}`)
-        }
-    })
-
     backButton.addEventListener("click", (event) => {
         if (indexPosition === 0) {
             cardCount.innerText = `1 / ${flashcardsArr.length} cards`
-            console.log(`Index position: ${indexPosition}`)
-        } else if (indexPosition > 0) {
+            backButton.disabled = true
+            backButton.classList.add("disabled")
+            console.log(`Index position: ${indexPosition}`, `Back button is disabled.`)
+        } else {
+            backButton.disabled = false
+            backButton.classList.remove("disabled")
+            
             indexPosition = indexPosition - 1
             renderFrontFlashcard(flashcardsArr[indexPosition])
             cardCount.innerText = `${indexPosition + 1} / ${flashcardsArr.length} cards`
-
             console.log(`Index position: ${indexPosition}`)
         }
     })
+
+    nextButton.addEventListener("click", (event) => {
+        indexPosition = indexPosition + 1
+        renderFrontFlashcard(flashcardsArr[indexPosition])
+        cardCount.innerText = `${indexPosition + 1} / ${flashcardsArr.length} cards`
+
+        console.log(`Index position: ${indexPosition}`)
+    })
+
+    // if (indexPosition === 0) {
+    //     cardCount.innerText = `1 / ${flashcardsArr.length} cards`
+    //     backButton.disabled = true
+    //     backButton.classList.add("disabled")
+    //     console.log(`Index position: ${indexPosition}`, `Back button is disabled.`)
+
+    //     nextButton.addEventListener("click", (event) => {
+    //         indexPosition = indexPosition + 1
+    //         renderFrontFlashcard(flashcardsArr[indexPosition])
+    //         cardCount.innerText = `${indexPosition + 1} / ${flashcardsArr.length} cards`
+    
+    //         console.log(`Index position: ${indexPosition}`)
+    //     })
+    // }
+
+    // else if (indexPosition > 0 && indexPosition < flashcardsArr.length) {
+    //     backButton.addEventListener("click", (event) => {
+    //         backButton.disabled = false
+    //         backButton.classList.remove("disabled")
+            
+    //         indexPosition = indexPosition - 1
+    //         renderFrontFlashcard(flashcardsArr[indexPosition])
+    //         cardCount.innerText = `${indexPosition + 1} / ${flashcardsArr.length} cards`
+    //         console.log(`Index position: ${indexPosition}`)
+    //     })
+
+    //     nextButton.addEventListener("click", (event) => {
+    //         indexPosition = indexPosition + 1
+    //         renderFrontFlashcard(flashcardsArr[indexPosition])
+    //         cardCount.innerText = `${indexPosition + 1} / ${flashcardsArr.length} cards`
+    
+    //         console.log(`Index position: ${indexPosition}`)
+    //     })
+    // } else if (indexPosition + 1 === flashcardsArr.length) {
+    //     nextButton.disabled = true
+    //     nextButton.classList.add("disabled")
+    //     console.log("Next button has been disabled")
+    // }
 }
 
 function frontCardInfo(flash) {

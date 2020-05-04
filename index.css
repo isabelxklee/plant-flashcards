@@ -48,6 +48,10 @@ button.navigation:hover {
     border: none;
 }
 
+.disabled {
+    opacity: 0.5;
+}
+
 h1 {
     font-size: 32px;
     margin-top: 60px;

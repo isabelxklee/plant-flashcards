@@ -67,10 +67,10 @@ h2 {
     transition: 0.3s;
     border-radius: 5px;
     width: 250px;
-    height: 350px;
+    height: 400px;
     margin-left: 25%;
     margin-top: 40px;
-    vertical-align: center;;
+    vertical-align: center;
 }
 
 .flip-card-inner {
@@ -85,7 +85,7 @@ h2 {
 .flip-card-inner img {
     width: 100%;
     border-radius: 5px 5px 0 0;
-    max-height: 250px;
+    height: 300px;
     object-fit: cover;
 }
 
@@ -101,23 +101,27 @@ h2 {
     display: inline-block;
 }
 
-p.flip-card-back.content {
-    font-size: 24px
+p.flip-card-back.rating {
+    font-size: 20px;
+    margin: 10px;
+    padding-top: 40px;
 }
 
-.title {
-    padding-top: 75px;
-    margin-bottom: 0px;
+p.flip-card-back.content {
+    font-size: 20px;
+}
+
+.flip-card-back.title {
     font-size: 14px;
     text-transform: uppercase;
     font-weight: 900;
     letter-spacing: 2px;
+    margin: 10px;
 }
 
 p.content {
     text-align: center;
     font-size: 16px;
-    padding-top: 3%;
     padding-left: 10%;
     padding-right: 10%;
 }

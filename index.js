@@ -33,12 +33,12 @@ function createCardContainer(flashcardsArr) {
     let nextButton = document.createElement("button")
     nextButton.classList.add("navigation")
     nextButton.id = "next-button"
-    nextButton.innerText = "Next card"
+    nextButton.innerText = "Next"
 
     let backButton = document.createElement("button")
     backButton.classList.add("navigation")
     backButton.id = "back-button"
-    backButton.innerText = "Previous card"
+    backButton.innerText = "Previous"
 
     body.append(header, flashcardContainer)
     buttonGroup.append(backButton, nextButton)

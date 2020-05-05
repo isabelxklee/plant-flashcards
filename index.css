@@ -1,6 +1,7 @@
 body {
     margin: 0px;
     font-family: "Ringside Wide";
+    text-align: center;
 }
 
 .header {
@@ -23,18 +24,19 @@ line-height: 25px;
     cursor: default;
 }
 
-.header-right {
-    float: right;
+div.btn-group {
+    display: inline-block;
 }
 
 button.navigation {
-    background-color: rgb(43, 43, 43);
-    color: rgb(43, 43, 43);
+    background-color: rgb(23, 99, 75);
     font-family: "Ringside Wide";
+    font-weight: 500;
     border-radius: 4px;
     border: none;
     color: white;
-    padding: 10px;
+    padding: 12px;
+    width: 150px;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
@@ -46,49 +48,83 @@ button.navigation {
 
 button#back-button.navigation {
     background-color: white;
-    color: rgb(43, 43, 43);
-    border: 2px solid rgb(43, 43, 43);
-    padding-right: 14px;
-    padding-left: 14px;
+    color: rgb(23, 99, 75);
+    border: 2px solid rgb(23, 99, 75);
 }
 
 button#next-button.navigation {
-    border: 2px solid rgb(43, 43, 43);
-    padding-right: 20px;
-    padding-left: 20px;
+    border: 2px solid rgb(23, 99, 75);
 }
 
 button.navigation:hover {
     opacity: 0.5;
 }
 
+div.answer-options {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+div.answer-options button {
+    background-color: rgb(23, 99, 75);
+    font-family: "Ringside Wide";
+    border-radius: 4px;
+    border: none;
+    color: white;
+    padding: 14px;
+    width: 250px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    margin: 0px 20px 10px 0px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    display: block;
+}
+
+div.answer-options button:hover {
+    opacity: 0.75;
+}
+
 #flashcard-navigation {
     padding-top: 14px;
-    margin-left: 25%;
 }
 
 .disabled {
     opacity: 0.5;
 }
 
+div.card-intro {
+    margin-top: 50px;
+    display: inline-block;
+    text-align: center;
+}
+
 h1 {
-    font-size: 32px;
-    margin-top: 60px;
-    margin-left: 25%;
+    font-size: 28px;
 }
 
 h2 {
     font-size: 24px;
+    font-weight: 500;
+}
+
+h3 {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+div.quiz-intro {
+    display: inline-block;
+    margin-top: 50px;
 }
 
 .flip-card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border-radius: 5px;
     width: 250px;
-    height: 400px;
-    margin-left: 25%;
-    margin-top: 40px;
-    position: relative;
+    height: 375px;
+    display: inline-block;
     text-align: center;
     font-family: 'Ringside Wide';
 }
@@ -104,6 +140,11 @@ h2 {
     width: 100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+}
+
+h2.flip-card-front {
+    font-size: 22px;
+    font-weight: 700;
 }
 
 .flip-card-back {
@@ -133,6 +174,5 @@ p.flip-card-back.content {
 
 p.card-count {
     font-size: 16px;
-    padding-left: 10%;
-    padding-right: 10%;
+    display: inline-block;
 }

@@ -37,13 +37,13 @@ ${header}
 <div class="quiz-intro">
     <p id="card-count"></p>
 
-    <h1>Which of these plants is pet-friendly?</h1>
+    <h1 id="question"></h1>
     <div class="answer-options">
         <button>Monstera Plant</button>
         <button>Snake Plant</button>
         <button>ZZ Plant</button>
     </div>
 
-    <h3 id="score">Score: </h3>
+    <h3 id="score"></h3>
 </div>
 `

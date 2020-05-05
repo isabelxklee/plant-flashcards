@@ -1,6 +1,3 @@
-const flashcardsURL = `http://localhost:3000/flashcards`
-const body = document.querySelector("body")
-
 fetch(flashcardsURL)
     .then(r => r.json())
     .then((flashcardsArr) => {
@@ -42,7 +39,6 @@ function loadLearningMode(flashcardsArr) {
 
 function loadFlashcard(flash) {
     document.body.innerHTML = learningMode
-    innerCard = document.querySelector("div.flip-card-inner")
 
     let plantImage = document.createElement("img")
     plantImage.classList.add("flip-card-front")
@@ -53,6 +49,8 @@ function loadFlashcard(flash) {
     plantName.classList.add("flip-card-front")
     plantName.id = "plant-name"
     plantName.innerText = flash.plant_name
+
+    let innerCard = document.querySelector(".flip-card-inner")
 
     innerCard.append(plantImage, plantName)
 
@@ -94,14 +92,13 @@ function loadQuizTime() {
 
 function navLinkActions() {
     let quizLink = document.getElementById("quiz-time")
+    let learningModeLink = document.getElementById("learning-mode")
 
     quizLink.addEventListener("click", (event) => {
         console.log("It's quiz time!")
         body.innerHTML = quizTime
         loadQuizTime(event)
     })
-
-    let learningModeLink = document.getElementById("learning-mode")
 
     learningModeLink.addEventListener("click", (event) => {
         console.log("It's time to learn!")

@@ -17,7 +17,7 @@ let learningMode =
 <div class="flip-card">
     <div class="flip-card-inner">
     </div>
-    
+
     <p class="content" id="card-count"></p>
 
     <div class="btn-group">

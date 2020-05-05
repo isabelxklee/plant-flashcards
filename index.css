@@ -78,25 +78,17 @@ h2 {
 
 .flip-card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
     border-radius: 5px;
     width: 250px;
     height: 400px;
     margin-left: 25%;
     margin-top: 40px;
-    vertical-align: center;
-}
-
-.flip-card-inner {
     position: relative;
-    width: 100%;
-    height: 100%;
     text-align: center;
-    transition: transform 0.6s;
     font-family: 'Ringside Wide';
 }
 
-.flip-card-inner img {
+.flip-card img {
     width: 100%;
     border-radius: 5px 5px 0 0;
     height: 300px;
@@ -123,6 +115,7 @@ p.flip-card-back.rating {
 
 p.flip-card-back.content {
     font-size: 20px;
+    margin: 10px;
 }
 
 .flip-card-back.title {
@@ -133,7 +126,7 @@ p.flip-card-back.content {
     margin: 10px;
 }
 
-p.content {
+p.card-count {
     text-align: center;
     font-size: 16px;
     padding-left: 10%;

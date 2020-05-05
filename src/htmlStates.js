@@ -15,15 +15,12 @@ let learningMode =
 
 <h1>Click on the card to flip it.</h1>
 <div class="flip-card">
-    <div class="flip-card-inner">
-    </div>
+</div>
 
-    <p class="content" id="card-count"></p>
-
-    <div class="btn-group">
-        <button class="navigation" id="back-button">Previous</button>
-        <button class="navigation" id="next-button">Next</button>
-    </div>
+<p id="card-count"></p>
+<div class="btn-group">
+    <button class="navigation" id="back-button">Previous</button>
+    <button class="navigation" id="next-button">Next</button>
 </div>
 `
 

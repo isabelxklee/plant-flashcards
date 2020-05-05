@@ -50,7 +50,7 @@ function loadFlashcard(flash) {
     plantName.id = "plant-name"
     plantName.innerText = flash.plant_name
 
-    let innerCard = document.querySelector(".flip-card-inner")
+    let innerCard = document.querySelector(".flip-card")
 
     innerCard.append(plantImage, plantName)
 
@@ -61,6 +61,8 @@ function loadFlashcard(flash) {
 }
 
 function backCardInfo(flash) {
+    let innerCard = document.querySelector(".flip-card")
+    
     let emojiRating = document.createElement("p")
     emojiRating.classList.add("flip-card-back", "rating")
     emojiRating.innerText = flash.emoji_rating
@@ -74,9 +76,6 @@ function backCardInfo(flash) {
     let factContent = document.createElement("p")
     factContent.classList.add("flip-card-back", "content")
     factContent.innerText = flash.fact_content
-
-    let flashcardContainer = body.querySelector(".flip-card")
-    let innerCard = flashcardContainer.querySelector(".flip-card-inner")
 
     innerCard.append(emojiRating, lineBreak, factTitle, factContent)
 

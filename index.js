@@ -3,10 +3,12 @@ const body = document.querySelector("body")
 
 fetch(flashcardsURL)
     .then(r => r.json())
-    .then((flashcardsArr) => {
-        createCardContainer(flashcardsArr)
-        renderFrontFlashcard(flashcardsArr[0])
-    })
+    // .then((flashcardsArr) => {
+    //     loadLearningMode()
+    //     createCardContainer(flashcardsArr)
+    //     renderFrontFlashcard(flashcardsArr[0])
+    // })
+    .then(loadLearningMode())
 
 function renderFrontFlashcard(flash) {
     frontCardInfo(flash)
@@ -118,4 +120,8 @@ function backCardInfo(flash) {
         innerCard.innerHTML = ""
         frontCardInfo(flash)
     })
+}
+
+function loadLearningMode() {
+    document.body.innerHTML = learningMode
 }

@@ -2,15 +2,19 @@ fetch(flashcardsURL)
     .then(r => r.json())
     .then((flashcardsArr) => {
         loadLearningMode(flashcardsArr)
-        learningModeNavLink(flashcardsArr)
+        learningModeLinkAction()
+        quizTimeLinkAction()
     })
 
-function learningModeNavLink(flashcardsArr) {
+function learningModeLinkAction() {
     let learningModeLink = document.getElementById("learning-mode")
 
     learningModeLink.addEventListener("click", () => {
-        console.log("It's time to learn!")
-        loadLearningMode(flashcardsArr)
+        fetch(flashcardsURL)
+            .then(r => r.json())
+            .then((flashcardsArr) => {
+                loadLearningMode(flashcardsArr)
+            })
     })
 }
 
@@ -18,7 +22,8 @@ function loadLearningMode(flashcardsArr) {
     document.body.innerHTML = learningMode
     renderFrontFlashcard(flashcardsArr[0])
     renderPageElements(flashcardsArr)
-    learningModeNavLink(flashcardsArr)
+    learningModeLinkAction()
+    quizTimeLinkAction()
 }
 
 function renderPageElements(flashcardsArr) {
@@ -96,25 +101,23 @@ function renderBackCardInfo(flash) {
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
-fetch(questionsURL)
-    .then(r => r.json())
-    .then((questionsArr) => {
-        loadQuizMode(questionsArr)
-        quizTimeLinkAction(questionsArr)
-    })
-
-function quizTimeLinkAction(questionsArr) {
+function quizTimeLinkAction() {
     let quizLink = document.getElementById("quiz-time")
 
     quizLink.addEventListener("click", () => {
-        loadQuizMode(questionsArr)
+        fetch(questionsURL)
+            .then(r => r.json())
+            .then((questionsArr) => {
+                loadQuizMode(questionsArr)
+                learningModeLinkAction()
+            })
     })
 }
 
 function loadQuizMode(questionsArr) {
     document.body.innerHTML = quizTime
     renderQuizElements(questionsArr)
-    quizTimeLinkAction(questionsArr)
+    quizTimeLinkAction()
 }
 
 function renderQuizElements(questionsArr) {

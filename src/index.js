@@ -2,43 +2,49 @@ fetch(flashcardsURL)
     .then(r => r.json())
     .then((flashcardsArr) => {
         loadLearningMode(flashcardsArr)
-        loadQuizTime()
+        navLinkActions(flashcardsArr)
     })
 
-function loadFlashcardNavigation(flashcardsArr) {
+function loadLearningMode(flashcardsArr) {
+    document.body.innerHTML = learningMode
+    renderFrontFlashcard(flashcardsArr[0])
+    renderPageElements(flashcardsArr)
+    navLinkActions(flashcardsArr)
+}
+
+function renderPageElements(flashcardsArr) {
     let cardCount = document.getElementById("card-count")
     cardCount.innerText = `1 / ${flashcardsArr.length} cards`
+
     console.log(cardCount)
 
-    let indexPosition = 0
     let backButton = document.getElementById("back-button")
     let nextButton = document.getElementById("next-button")
-    
-    backButton.addEventListener("click", (event) => {
-        indexPosition = indexPosition - 1
-        loadFlashcard(flashcardsArr[indexPosition])
-        cardCount.innerText = `${indexPosition + 1} / ${flashcardsArr.length} cards`
 
-        console.log(`Index position: ${indexPosition}`)
-    })
+    let indexPosition = 0
 
     nextButton.addEventListener("click", (event) => {
         indexPosition = indexPosition + 1
-        loadFlashcard(flashcardsArr[indexPosition])
+        renderFrontFlashcard(flashcardsArr[indexPosition])
         cardCount.innerText = `${indexPosition + 1} / ${flashcardsArr.length} cards`
 
+        console.log(cardCount)
+        console.log(`Index position: ${indexPosition}`)
+    })
+
+    backButton.addEventListener("click", (event) => {
+        indexPosition = indexPosition - 1
+        renderFrontFlashcard(flashcardsArr[indexPosition])
+        cardCount.innerText = `${indexPosition + 1} / ${flashcardsArr.length} cards`
+
+        console.log(cardCount)
         console.log(`Index position: ${indexPosition}`)
     })
 }
 
-function loadLearningMode(flashcardsArr) {
-    loadFlashcard(flashcardsArr[0])
-    loadFlashcardNavigation(flashcardsArr)
-    navLinkActions()
-}
-
-function loadFlashcard(flash) {
-    document.body.innerHTML = learningMode
+function renderFrontFlashcard(flash) {
+    let innerCard = document.querySelector(".flip-card")
+    innerCard.innerHTML = ""
 
     let plantImage = document.createElement("img")
     plantImage.classList.add("flip-card-front")
@@ -50,19 +56,17 @@ function loadFlashcard(flash) {
     plantName.id = "plant-name"
     plantName.innerText = flash.plant_name
 
-    let innerCard = document.querySelector(".flip-card")
-
     innerCard.append(plantImage, plantName)
 
     innerCard.addEventListener("click", (event) => {
         innerCard.innerHTML = ""
-        backCardInfo(flash)
+        renderBackCardInfo(flash)
     })
 }
 
-function backCardInfo(flash) {
+function renderBackCardInfo(flash) {
     let innerCard = document.querySelector(".flip-card")
-    
+
     let emojiRating = document.createElement("p")
     emojiRating.classList.add("flip-card-back", "rating")
     emojiRating.innerText = flash.emoji_rating
@@ -81,27 +85,22 @@ function backCardInfo(flash) {
 
     innerCard.addEventListener("click", (event) => {
         innerCard.innerHTML = ""
-        loadFlashcard(flash)
+        renderFrontFlashcard(flash)
     })
 }
 
-function loadQuizTime() {
-    navLinkActions()
-}
-
-function navLinkActions() {
+function navLinkActions(flashcardsArr) {
     let quizLink = document.getElementById("quiz-time")
     let learningModeLink = document.getElementById("learning-mode")
 
     quizLink.addEventListener("click", (event) => {
         console.log("It's quiz time!")
         body.innerHTML = quizTime
-        loadQuizTime(event)
+        navLinkActions(flashcardsArr)
     })
 
     learningModeLink.addEventListener("click", (event) => {
         console.log("It's time to learn!")
-        body.innerHTML = learningMode
-        loadLearningMode()
+        loadLearningMode(flashcardsArr)
     })
 }

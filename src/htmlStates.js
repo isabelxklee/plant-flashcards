@@ -17,10 +17,12 @@ let learningMode =
 <div class="flip-card">
 </div>
 
-<p id="card-count"></p>
-<div class="btn-group">
-    <button class="navigation" id="back-button">Previous</button>
-    <button class="navigation" id="next-button">Next</button>
+<div id="flashcard-navigation">
+    <p id="card-count"></p>
+    <div class="btn-group">
+        <button class="navigation" id="back-button">Previous</button>
+        <button class="navigation" id="next-button">Next</button>
+    </div>
 </div>
 `
 

@@ -121,63 +121,74 @@ function loadQuizMode(questionsArr) {
 }
 
 function renderQuizElements(questionsArr) {
-    let nextQuestion = document.getElementById("next-question")
-    nextQuestion.classList.add("incorrect")
-
-    let answerStatus = document.getElementById("status")
-
     let scoreKeeper = document.getElementById("score")
     let scoreCount = 0
     scoreKeeper.innerText = `Score: ${scoreCount}`
 
-    let questionIndex = 1
-    
-    let question = document.getElementById("question")
-    question.innerText = `${questionsArr[questionIndex].content}`
-
     let answerOptions = document.querySelector(".answer-options")
+    let answerStatus = document.getElementById("status")
 
-    questionsArr[questionIndex].answers.forEach((answer) => {
+    let questionIndex = 0
+    
+    let questionStatement = document.getElementById("question")
+    questionStatement.innerText = `${questionsArr[questionIndex].content}`
+
+    let nextQuestion = document.getElementById("next-question")
+    nextQuestion.classList.add("incorrect")
+
+    answerOptionLoop(questionsArr[questionIndex])
+
+    nextQuestion.addEventListener("click", (event) => {
+        console.log(event.target)
+
+        questionIndex = questionIndex + 1
+        console.log(`Next index position: ${questionIndex}`)
+        console.log(questionsArr[questionIndex].content)
+
+        answerOptions.innerHTML = ""
+        questionStatement.innerText = `${questionsArr[questionIndex].content}`
+
+        answerStatus.innerText = ""
+
+        // load the new answer options
+        answerOptionLoop(questionsArr[questionIndex])
+
+    }) // end of continue button event listener
+} // end of function
+
+function answerOptionLoop(singleQuestion) {
+    let scoreKeeper = document.getElementById("score")
+    let scoreCount = 0
+    scoreKeeper.innerText = `Score: ${scoreCount}`
+    
+    let answerOptions = document.querySelector(".answer-options")
+    let answerStatus = document.getElementById("status")
+
+    let nextQuestion = document.getElementById("next-question")
+    nextQuestion.classList.add("incorrect")
+
+    singleQuestion.answers.forEach((answer) => {    
         let answerButton = document.createElement("button")
         answerButton.innerText = answer.content
         answerOptions.append(answerButton)
-
+    
         answerButton.addEventListener("click", (event) => {
+    
             if (answer.correct_answer === true) {
                 console.log("This is correct!")
                 answerButton.classList.toggle("correct")
-
+    
                 answerStatus.innerText = "Correct! 🎉"
-
+    
                 scoreCount = scoreCount + 100
                 scoreKeeper.innerText = `Score: ${scoreCount}`
-
+    
                 nextQuestion.classList.remove("incorrect")
             } else {
                 console.log("WRONG!")
                 answerStatus.innerText = "Wrong answer 😔"
                 answerButton.classList.toggle("incorrect")
             }
-        })
-
-
-    })
-
-
-
-    // nextButton.addEventListener("click", (event) => {
-    //     indexPosition = indexPosition + 1
-    //     renderFrontFlashcard(flashcardsArr[indexPosition])
-    //     cardCount.innerText = `${indexPosition + 1} / ${flashcardsArr.length} cards`
-
-    //     console.log(`Index position: ${indexPosition}`)
-    // })
-
-    // backButton.addEventListener("click", (event) => {
-    //     indexPosition = indexPosition - 1
-    //     renderFrontFlashcard(flashcardsArr[indexPosition])
-    //     cardCount.innerText = `${indexPosition + 1} / ${flashcardsArr.length} cards`
-
-    //     console.log(`Index position: ${indexPosition}`)
-    // })
+        }) // end of answer button event listener
+    }) // end of for each statement
 }

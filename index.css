@@ -28,12 +28,30 @@ div.btn-group {
     display: inline-block;
 }
 
-button.navigation {
+button#back-button.navigation {
+    background-color: white;
+    color: rgb(23, 99, 75);
+    border: 2px solid rgb(23, 99, 75);
+    font-family: "Ringside Wide";
+    font-weight: 500;
+    border-radius: 4px;
+    padding: 12px;
+    width: 150px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 4px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    float: left;
+}
+
+button#next-button.navigation {
+    border: 2px solid rgb(23, 99, 75);
     background-color: rgb(23, 99, 75);
     font-family: "Ringside Wide";
     font-weight: 500;
     border-radius: 4px;
-    border: none;
     color: white;
     padding: 12px;
     width: 150px;
@@ -46,14 +64,20 @@ button.navigation {
     float: left;
 }
 
-button#back-button.navigation {
-    background-color: white;
-    color: rgb(23, 99, 75);
-    border: 2px solid rgb(23, 99, 75);
-}
-
-button#next-button.navigation {
-    border: 2px solid rgb(23, 99, 75);
+button#next-question.navigation {
+    background-color: rgb(43, 43, 43);
+    font-family: "Ringside Wide";
+    font-weight: 500;
+    border-radius: 4px;
+    color: white;
+    padding: 12px;
+    width: 150px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 4px;
+    transition-duration: 0.4s;
+    cursor: pointer;
 }
 
 button.navigation:hover {
@@ -71,19 +95,27 @@ div.answer-options button {
     border-radius: 4px;
     border: none;
     color: white;
-    padding: 14px;
-    width: 250px;
-    text-align: center;
+    padding: 18px;
+    width: 400px;
     text-decoration: none;
     font-size: 18px;
     margin: 0px 20px 10px 0px;
-    transition-duration: 0.4s;
+    transition-duration: 0.2s;
     cursor: pointer;
     display: block;
 }
 
-div.answer-options button:hover {
-    opacity: 0.75;
+.incorrect {
+    opacity: 0.25;
+    cursor: not-allowed;
+    pointer-events:none;
+}
+
+div.answer-options button.correct {
+    background-color: rgb(52, 47, 147);
+    color: white;
+    cursor: not-allowed;
+    pointer-events:none;
 }
 
 #flashcard-navigation {

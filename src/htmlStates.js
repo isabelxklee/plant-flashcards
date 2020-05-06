@@ -36,14 +36,14 @@ let quizTime = `
 ${header}
 <div class="quiz-intro">
     <p id="card-count"></p>
-
+    
     <h1 id="question"></h1>
     <div class="answer-options">
-        <button>Monstera Plant</button>
-        <button>Snake Plant</button>
-        <button>ZZ Plant</button>
-    </div>
+    </div><br>
 
-    <h3 id="score"></h3>
+    <h2 id="status"></h2>
+    <h2 id="score"></h2>
+
+    <button class="navigation" id="next-question">Continue</button>
 </div>
 `

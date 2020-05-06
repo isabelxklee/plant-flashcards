@@ -59,7 +59,7 @@ let createPlayer = `
 
     <div class="quiz-intro">
         <h1>Save your score</h1>
-        <h2 id="score">Score: 0</h2>
+        <h2 id="score"></h2>
 
         <form class="create-user">
             <label for="username">Username</label><br>

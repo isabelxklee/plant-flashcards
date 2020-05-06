@@ -211,6 +211,9 @@ function createPlayerAction() {
     learningModeLinkAction()
     quizTimeLinkAction()
     scoreboardLinkAction()
+
+    let scoreKeeper = document.getElementById("score")
+    scoreKeeper.innerText = `Score: ${scoreCount}`
 }
 
 ////////////////////////////////////////////////////////////////////////////////////// 

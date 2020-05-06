@@ -130,26 +130,27 @@ function renderQuizElements(questionsArr) {
     let nextQuestion = document.getElementById("next-question")
     nextQuestion.classList.add("incorrect")
 
-    answerOptionLoop(questionsArr[questionIndex])
+    answerOptionLoop(questionsArr[questionIndex], questionsArr)
 
     nextQuestion.addEventListener("click", (event) => {
-        console.log(event.target)
-
         questionIndex = questionIndex + 1
-        console.log(`Next index position: ${questionIndex}`)
-        console.log(questionsArr[questionIndex].content)
+        console.log(`Question #${questionIndex + 1}`)
 
         answerOptions.innerHTML = ""
         questionStatement.innerText = `${questionsArr[questionIndex].content}`
 
         answerStatus.innerText = ""
-        
-        answerOptionLoop(questionsArr[questionIndex])
 
+        answerOptionLoop(questionsArr[questionIndex], questionsArr)
     }) // end of continue button event listener
 } // end of function
 
-function answerOptionLoop(singleQuestion) {
+function answerOptionLoop(singleQuestion, questionsArr) {
+    let quizIntro = document.querySelector(".quiz-intro")
+
+    let numberOfQuestions = questionsArr.length
+    let lastIndexPosition = numberOfQuestions - 1
+
     let scoreKeeper = document.getElementById("score")
     
     let answerOptions = document.querySelector(".answer-options")
@@ -157,6 +158,17 @@ function answerOptionLoop(singleQuestion) {
 
     let nextQuestion = document.getElementById("next-question")
     nextQuestion.classList.add("incorrect")
+
+    if (singleQuestion === questionsArr[lastIndexPosition]) {
+        console.log("LAST QUESTION!!!")
+        nextQuestion.remove()
+
+        let createUsernameButton = document.createElement("button")
+        createUsernameButton.classList.add("navigation", "save")
+        createUsernameButton.innerText = "Save score"
+        
+        quizIntro.append(createUsernameButton)
+    } 
 
     singleQuestion.answers.forEach((answer) => {    
         let answerButton = document.createElement("button")
@@ -183,3 +195,7 @@ function answerOptionLoop(singleQuestion) {
         }) // end of answer button event listener
     }) // end of for each statement
 } // end of function
+
+function lastQuestion() {
+    document.body.innerHTML = scoreboard
+}

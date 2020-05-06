@@ -80,6 +80,25 @@ button#next-question.navigation {
     cursor: pointer;
 }
 
+button.navigation.save {
+    background-color: white;
+    color: rgb(23, 99, 75);
+    border: 2px solid rgb(23, 99, 75);
+
+    font-family: "Ringside Wide", "Karla", sans-serif; 
+    font-weight: 500;
+    border-radius: 4px;
+    padding: 12px;
+    width: 150px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 4px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    display: inline-block;
+}
+
 button.navigation:hover {
     opacity: 0.5;
 }

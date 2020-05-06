@@ -28,25 +28,7 @@ div.btn-group {
     display: inline-block;
 }
 
-button#back-button.navigation {
-    background-color: white;
-    color: rgb(23, 99, 75);
-    border: 2px solid rgb(23, 99, 75);
-    font-family: "Ringside Wide", "Karla", sans-serif; 
-    font-weight: 500;
-    border-radius: 4px;
-    padding: 12px;
-    width: 150px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    margin: 4px 4px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    float: left;
-}
-
-button#next-button.navigation {
+button.navigation {
     border: 2px solid rgb(23, 99, 75);
     background-color: rgb(23, 99, 75);
     font-family: "Ringside Wide", "Karla", sans-serif; 
@@ -61,42 +43,19 @@ button#next-button.navigation {
     margin: 4px 4px;
     transition-duration: 0.4s;
     cursor: pointer;
-    float: left;
 }
 
-button#next-question.navigation {
-    background-color: rgb(43, 43, 43);
-    font-family: "Ringside Wide", "Karla", sans-serif; 
-    font-weight: 500;
-    border-radius: 4px;
-    color: white;
-    padding: 12px;
-    width: 150px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    margin: 4px 4px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-}
-
-button.navigation.save {
+button#save.navigation {
     background-color: white;
     color: rgb(23, 99, 75);
     border: 2px solid rgb(23, 99, 75);
-
-    font-family: "Ringside Wide", "Karla", sans-serif; 
-    font-weight: 500;
-    border-radius: 4px;
-    padding: 12px;
-    width: 150px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    margin: 4px 4px;
-    transition-duration: 0.4s;
-    cursor: pointer;
     display: inline-block;
+}
+
+button#back-button.navigation {
+    background-color: white;
+    color: rgb(23, 99, 75);
+    border: 2px solid rgb(23, 99, 75);
 }
 
 button.navigation:hover {
@@ -229,4 +188,19 @@ p.flip-card-back.content {
 p.card-count {
     font-size: 16px;
     display: inline-block;
+}
+
+input {
+    border: 2px solid rgb(23, 99, 75);
+    border-radius: 4px;
+    height: 40px;
+    width: 300px;
+    display: inline-block;
+}
+
+form.create-user {
+    text-align: left;
+    padding: 10px;
+    display: grid;
+    font-size: 18px;
 }

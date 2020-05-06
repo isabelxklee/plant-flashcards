@@ -6,6 +6,7 @@ let header = `
         <div class="header-right">
             <a href="#default" id="learning-mode">Learning mode</a>
             <a href="#default" id="quiz-time">Quiz time</a>
+            <a href="#default" id="scoreboard">Scoreboard</a>
         </div>
     </div>
 `
@@ -49,6 +50,22 @@ let quizTime = `
         <h2 id="score">Score: 0</h2>
 
         <button class="navigation" id="next-question">Continue</button>
+    </div>
+`
+
+let createPlayer = `
+
+    ${header}
+
+    <div class="quiz-intro">
+        <h1>Save your score</h1>
+        <h2 id="score">Score: 0</h2>
+
+        <form class="create-user">
+            <label for="username">Username</label><br>
+            <input type="text", name="username"/><br>
+            <button class="navigation" type="submit">Save</button>
+        </form>
     </div>
 `
 

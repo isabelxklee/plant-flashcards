@@ -4,6 +4,7 @@ fetch(flashcardsURL)
         loadLearningMode(flashcardsArr)
         learningModeLinkAction()
         quizTimeLinkAction()
+        scoreboardLinkAction()
     })
 
 function learningModeLinkAction() {
@@ -24,6 +25,7 @@ function loadLearningMode(flashcardsArr) {
     renderPageElements(flashcardsArr)
     learningModeLinkAction()
     quizTimeLinkAction()
+    scoreboardLinkAction()
 }
 
 function renderPageElements(flashcardsArr) {
@@ -110,6 +112,7 @@ function quizTimeLinkAction() {
             .then((questionsArr) => {
                 loadQuizMode(questionsArr)
                 learningModeLinkAction()
+                scoreboardLinkAction()
             })
     })
 }
@@ -159,17 +162,6 @@ function answerOptionLoop(singleQuestion, questionsArr) {
     let nextQuestion = document.getElementById("next-question")
     nextQuestion.classList.add("incorrect")
 
-    if (singleQuestion === questionsArr[lastIndexPosition]) {
-        console.log("LAST QUESTION!!!")
-        nextQuestion.remove()
-
-        let createUsernameButton = document.createElement("button")
-        createUsernameButton.classList.add("navigation", "save")
-        createUsernameButton.innerText = "Save score"
-        
-        quizIntro.append(createUsernameButton)
-    } 
-
     singleQuestion.answers.forEach((answer) => {    
         let answerButton = document.createElement("button")
         answerButton.innerText = answer.content
@@ -194,8 +186,49 @@ function answerOptionLoop(singleQuestion, questionsArr) {
             }
         }) // end of answer button event listener
     }) // end of for each statement
+
+    if (singleQuestion === questionsArr[lastIndexPosition]) {
+        console.log("LAST QUESTION!!!")
+        nextQuestion.remove()
+
+        let saveScore = document.createElement("button")
+        saveScore.classList.add("navigation")
+        saveScore.id = "save"
+        saveScore.innerText = "Save score"
+        
+        quizIntro.append(saveScore)
+
+        saveScore.addEventListener("click", () => {
+            createPlayerAction()
+        })
+    } 
 } // end of function
 
-function lastQuestion() {
+////////////////////////////////////////////////////////////////////////////////////// 
+
+function createPlayerAction() {
+    document.body.innerHTML = createPlayer
+    learningModeLinkAction()
+    quizTimeLinkAction()
+    scoreboardLinkAction()
+}
+
+////////////////////////////////////////////////////////////////////////////////////// 
+
+function scoreboardLinkAction() {
+    let scoreboardLink = document.getElementById("scoreboard")
+
+    scoreboardLink.addEventListener("click", () => {
+        fetch(playersURL)
+            .then(r => r.json)
+            .then( () => {
+                loadScoreboard()
+                learningModeLinkAction()
+                quizTimeLinkAction()
+            })
+    })
+}
+
+function loadScoreboard() {
     document.body.innerHTML = scoreboard
 }

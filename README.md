@@ -1,14 +1,14 @@
 Plant Flashcards
 ========================
 
-Plant Flashcards is a full-stack web application where you can study about different plants through flashcards and test your knowledge. Made by [Isabel K. Lee](https://www.kleetime.com).
+Plant Flashcards is a full-stack web application where you can flip through flashcards to learn about plants and test your knowledge. Made by [Isabel K. Lee](https://www.kleetime.com).
 
 Live demo: coming soon...
 
 ## Features
 
 * Flip through flashcards to learn plant facts
-* Play a quiz game
+* Play a quiz game to test your knowledge on plants
 * Log your score in a leaderboard
 
 ## Domain Model
@@ -16,7 +16,7 @@ Coming soon...
 
 ## Tech Stack
 
-* JavaScript (Frontend)
+* Vanilla JavaScript (Frontend)
 * Ruby on Rails API (Backend: https://github.com/isabelxklee/plant-flashcards-backend)
 * PostgreSQL
 * HTML/CSS

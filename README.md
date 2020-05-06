@@ -1,7 +1,7 @@
 Plant Flashcards
 ========================
 
-Plant Flashcards a full-stack web application where you can study about different plants through flashcards and test your knowledge. Made by [Isabel K. Lee](https://www.kleetime.com).
+Plant Flashcards is a full-stack web application where you can study about different plants through flashcards and test your knowledge. Made by [Isabel K. Lee](https://www.kleetime.com).
 
 Live demo: coming soon...
 

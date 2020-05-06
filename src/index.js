@@ -121,14 +121,8 @@ function loadQuizMode(questionsArr) {
 }
 
 function renderQuizElements(questionsArr) {
-    let scoreKeeper = document.getElementById("score")
-    let scoreCount = 0
-    scoreKeeper.innerText = `Score: ${scoreCount}`
-
     let answerOptions = document.querySelector(".answer-options")
     let answerStatus = document.getElementById("status")
-
-    let questionIndex = 0
     
     let questionStatement = document.getElementById("question")
     questionStatement.innerText = `${questionsArr[questionIndex].content}`
@@ -149,8 +143,7 @@ function renderQuizElements(questionsArr) {
         questionStatement.innerText = `${questionsArr[questionIndex].content}`
 
         answerStatus.innerText = ""
-
-        // load the new answer options
+        
         answerOptionLoop(questionsArr[questionIndex])
 
     }) // end of continue button event listener
@@ -158,8 +151,6 @@ function renderQuizElements(questionsArr) {
 
 function answerOptionLoop(singleQuestion) {
     let scoreKeeper = document.getElementById("score")
-    let scoreCount = 0
-    scoreKeeper.innerText = `Score: ${scoreCount}`
     
     let answerOptions = document.querySelector(".answer-options")
     let answerStatus = document.getElementById("status")
@@ -191,4 +182,4 @@ function answerOptionLoop(singleQuestion) {
             }
         }) // end of answer button event listener
     }) // end of for each statement
-}
+} // end of function

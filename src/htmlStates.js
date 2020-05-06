@@ -42,7 +42,7 @@ ${header}
     </div><br>
 
     <h2 id="status"></h2>
-    <h2 id="score"></h2>
+    <h2 id="score">Score: 0</h2>
 
     <button class="navigation" id="next-question">Continue</button>
 </div>

@@ -114,6 +114,11 @@ div.card-intro {
     text-align: center;
 }
 
+div#flashcards.card-intro {
+    margin-top: 50px;
+    display: inline-flex;
+}
+
 h1 {
     font-size: 28px;
 }
@@ -133,7 +138,7 @@ div.page-container {
     margin-top: 50px;
 }
 
-.flip-card {
+.card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border-radius: 5px;
     width: 250px;
@@ -143,7 +148,7 @@ div.page-container {
     font-family: "Ringside Wide", "Karla", sans-serif;
 }
 
-.flip-card img {
+.card img {
     width: 100%;
     border-radius: 5px 5px 0 0;
     height: 300px;

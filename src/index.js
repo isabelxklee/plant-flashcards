@@ -1,7 +1,7 @@
-fetch(flashcardsURL)
+fetch(plantsURL)
     .then(r => r.json())
-    .then((flashcardsArr) => {
-        loadLearningMode(flashcardsArr)
+    .then((plantsArr) => {
+        loadLearningMode(plantsArr)
         learningModeLinkAction()
         quizTimeLinkAction()
         scoreboardLinkAction()
@@ -13,24 +13,21 @@ function learningModeLinkAction() {
     learningModeLink.addEventListener("click", () => {
         fetch(flashcardsURL)
             .then(r => r.json())
-            .then((flashcardsArr) => {
-                loadLearningMode(flashcardsArr)
+            .then((plantsArr) => {
+                loadLearningMode(plantsArr)
             })
     })
 }
 
-function loadLearningMode(flashcardsArr) {
+function loadLearningMode(plantsArr) {
     document.body.innerHTML = learningMode
-    renderFrontFlashcard(flashcardsArr[0])
-    renderPageElements(flashcardsArr)
-    learningModeLinkAction()
-    quizTimeLinkAction()
-    scoreboardLinkAction()
+    plantFlashcard(plantsArr[0])
+    // renderPageElements(plantsArr)
 }
 
-function renderPageElements(flashcardsArr) {
+function renderPageElements(plantsArr) {
     let cardCount = document.getElementById("card-count")
-    cardCount.innerText = `1 / ${flashcardsArr.length} cards`
+    cardCount.innerText = `1 / ${plantsArr.length} cards`
 
     let backButton = document.getElementById("back-button")
     let nextButton = document.getElementById("next-button")
@@ -39,64 +36,84 @@ function renderPageElements(flashcardsArr) {
 
     nextButton.addEventListener("click", (event) => {
         indexPosition = indexPosition + 1
-        renderFrontFlashcard(flashcardsArr[indexPosition])
-        cardCount.innerText = `${indexPosition + 1} / ${flashcardsArr.length} cards`
+        renderFrontFlashcard(plantsArr[indexPosition])
+        cardCount.innerText = `${indexPosition + 1} / ${plantsArr.length} cards`
 
         console.log(`Index position: ${indexPosition}`)
     })
 
     backButton.addEventListener("click", (event) => {
         indexPosition = indexPosition - 1
-        renderFrontFlashcard(flashcardsArr[indexPosition])
-        cardCount.innerText = `${indexPosition + 1} / ${flashcardsArr.length} cards`
+        renderFrontFlashcard(plantsArr[indexPosition])
+        cardCount.innerText = `${indexPosition + 1} / ${plantsArr.length} cards`
 
         console.log(`Index position: ${indexPosition}`)
     })
 }
 
-function renderFrontFlashcard(flash) {
-    let innerCard = document.querySelector(".flip-card")
+function plantFlashcard(plant) {
+    let pageContainer = document.querySelector(".card-intro")
+
+    let innerCard = document.getElementById("plant-info")
     innerCard.innerHTML = ""
 
     let plantImage = document.createElement("img")
-    plantImage.classList.add("flip-card-front")
     plantImage.id = "plant-image"
-    plantImage.src = flash.plant_image
+    plantImage.src = plant.image
 
     let plantName = document.createElement("h2")
-    plantName.classList.add("flip-card-front")
     plantName.id = "plant-name"
-    plantName.innerText = flash.plant_name
+    plantName.innerText = plant.name
 
     innerCard.append(plantImage, plantName)
 
-    innerCard.addEventListener("click", (event) => {
-        innerCard.innerHTML = ""
-        renderBackCardInfo(flash)
+    plant.flashcards.forEach((flashcard) => {
+        let pageContainer = document.querySelector(".card-intro")
+
+        let flashcardContainer = document.createElement("div")
+        flashcardContainer.classList.add("card")
+        flashcardContainer.id = `number-${flashcard.id}`
+
+        pageContainer.append(flashcardContainer)
+
+        loadFront(flashcard)
     })
 }
 
-function renderBackCardInfo(flash) {
-    let innerCard = document.querySelector(".flip-card")
+function loadFront(flashcard) {
+    let pageContainer = document.querySelector(".card-intro")
+    let flashcardContainer = pageContainer.querySelector(`#number-${flashcard.id}`)
+
+    let factTitle = document.createElement("h4")
+    factTitle.classList.add("flip-card-front", "title")
+    factTitle.innerText = flashcard.fact_title
+
+    flashcardContainer.append(factTitle)
+
+    flashcardContainer.addEventListener("click", () => {
+        flashcardContainer.innerHTML = ""
+        loadBack(flashcard)
+    })
+}
+
+function loadBack(flashcard) {
+    let pageContainer = document.querySelector(".card-intro")
+    let flashcardContainer = pageContainer.querySelector(`#number-${flashcard.id}`)
 
     let emojiRating = document.createElement("p")
     emojiRating.classList.add("flip-card-back", "rating")
-    emojiRating.innerText = flash.emoji_rating
+    emojiRating.innerText = flashcard.emoji_rating
 
     let lineBreak = document.createElement("br")
 
-    let factTitle = document.createElement("h4")
-    factTitle.classList.add("flip-card-back", "title")
-    factTitle.innerText = flash.fact_title
-
     let factContent = document.createElement("p")
     factContent.classList.add("flip-card-back", "content")
-    factContent.innerText = flash.fact_content
+    factContent.innerText = flashcard.fact_content
 
-    innerCard.append(emojiRating, lineBreak, factTitle, factContent)
+    flashcardContainer.append(emojiRating, lineBreak, factContent)
 
-    innerCard.addEventListener("click", (event) => {
-        innerCard.innerHTML = ""
-        renderFrontFlashcard(flash)
+    flashcardContainer.addEventListener("click", () => {
+        flashcardContainer.innerHTML = ""
+        loadFront(flashcard)
     })
 }

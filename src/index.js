@@ -61,17 +61,17 @@ function plantFlashcard(plant) {
     plantImage.id = "plant-image"
     plantImage.src = plant.image
 
-    let plantName = document.createElement("h2")
+    let plantName = document.createElement("h1")
     plantName.id = "plant-name"
     plantName.innerText = plant.name
 
-    innerCard.append(plantImage, plantName)
+    innerCard.append(plantName, plantImage)
 
     plant.flashcards.forEach((flashcard) => {
         let pageContainer = document.querySelector(".card-intro")
 
         let flashcardContainer = document.createElement("div")
-        flashcardContainer.classList.add("card")
+        flashcardContainer.classList.add("card", "flashcard")
         flashcardContainer.id = `number-${flashcard.id}`
 
         pageContainer.append(flashcardContainer)
@@ -84,7 +84,7 @@ function loadFront(flashcard) {
     let pageContainer = document.querySelector(".card-intro")
     let flashcardContainer = pageContainer.querySelector(`#number-${flashcard.id}`)
 
-    let factTitle = document.createElement("h4")
+    let factTitle = document.createElement("h2")
     factTitle.classList.add("flip-card-front", "title")
     factTitle.innerText = flashcard.fact_title
 

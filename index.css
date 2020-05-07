@@ -115,8 +115,14 @@ div.card-intro {
 }
 
 div#flashcards.card-intro {
-    margin-top: 50px;
+    margin-top: 75px;
     display: inline-flex;
+    padding: 20px;
+}
+
+div.card.flashcard {
+    margin-right: 40px;
+    margin-top: 70px;
 }
 
 h1 {
@@ -142,7 +148,7 @@ div.page-container {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border-radius: 5px;
     width: 250px;
-    height: 375px;
+    height: 300px;
     display: inline-block;
     text-align: center;
     font-family: "Ringside Wide", "Karla", sans-serif;
@@ -150,20 +156,26 @@ div.page-container {
 
 .card img {
     width: 100%;
-    border-radius: 5px 5px 0 0;
+    border-radius: 5px;
     height: 300px;
     object-fit: cover;
 }
 
-.flip-card-front {
-    width: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
+div#plant-info.card {
+    box-shadow: none;
+    margin-right: 40px;
 }
 
-h2.flip-card-front {
-    font-size: 22px;
+.flip-card-front {
+    width: 100%;
+    backface-visibility: hidden;
+    text-align: center;
+}
+
+h2.flip-card-front.title {
+    font-size: 20px;
     font-weight: 700;
+    padding-top: 120px;
 }
 
 .flip-card-back {
@@ -175,22 +187,13 @@ h2.flip-card-front {
 p.flip-card-back.rating {
     font-size: 35px;
     margin: 10px;
-    padding-top: 40px;
+    padding-top: 60px;
 }
 
 p.flip-card-back.content {
     font-family: "Ringside Wide", "Montserrat", sans-serif; 
     line-height: 30px;
     font-size: 22px;
-    margin: 10px;
-}
-
-.flip-card-back.title {
-    font-family: "Ringside Wide", "Montserrat", sans-serif; 
-    font-size: 14px;
-    text-transform: uppercase;
-    font-weight: 900;
-    letter-spacing: 2px;
     margin: 10px;
 }
 

@@ -19,8 +19,7 @@ let learningMode = `
     ${header}
 
     <div class="card-intro" id="flashcards">
-        <div class="card" id="plant-info">
-        
+        <div class="card" id="plant-info"><br>
         </div>
     </div>
 `

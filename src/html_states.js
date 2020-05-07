@@ -1,5 +1,3 @@
-// persistent header throughout the entire user experience
-
 let header = `
     <div class="header">
         <a href="#default" class="logo">🌿 Plant Flashcards 🌿</a>
@@ -7,12 +5,10 @@ let header = `
             <a href="#default" id="learning-mode">Learning mode</a>
             <a href="#default" id="quiz-time">Quiz time</a>
             <a href="#default" id="scoreboard">Scoreboard</a>
+            <a href="https://github.com/isabelxklee/plant-flashcards" target="blank" id="site-info">🐸 Made by Isabel</a>
         </div>
     </div>
 `
-
-// load a single flashcard
-// fill the inner card div with the correct flashcard information
 
 let learningMode = `
 
@@ -31,9 +27,6 @@ let learningMode = `
         </div>
     </div>
 `
-
-
-// quiz game
 
 let quizTime = `
 

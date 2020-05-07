@@ -24,6 +24,11 @@ line-height: 25px;
     cursor: default;
 }
 
+a#site-info {
+    font-size: 14px;
+    float: right;
+}
+
 div.btn-group {
     display: inline-block;
 }

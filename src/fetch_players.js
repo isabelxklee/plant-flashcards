@@ -19,6 +19,18 @@ function scoreboardLinkAction() {
 function loadScoreboard(playersArr) {
     document.body.innerHTML = scoreboard
     let scoreTable = document.getElementById("scoretable")
+    let takeQuizButton = document.getElementById("take-quiz")
+
+    takeQuizButton.addEventListener("click", () => {
+        fetch(questionsURL)
+            .then(r => r.json())
+            .then((questionsArr) => {
+                loadQuizMode(questionsArr)
+                learningModeLinkAction()
+                scoreboardLinkAction()
+            })
+    })
+
     let ranking = 0
 
     // sort the players by highscore

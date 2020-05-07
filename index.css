@@ -52,6 +52,10 @@ button#save.navigation {
     display: inline-block;
 }
 
+button#take-quiz.navigation {
+    width: 200px;
+}
+
 button#back-button.navigation {
     background-color: white;
     color: rgb(23, 99, 75);
@@ -124,7 +128,7 @@ h3 {
     font-weight: 500;
 }
 
-div.quiz-intro {
+div.page-container {
     display: inline-block;
     margin-top: 50px;
 }
@@ -195,12 +199,37 @@ input {
     border-radius: 4px;
     height: 40px;
     width: 300px;
+    padding-left: 14px;
     display: inline-block;
 }
 
 form.create-user {
     text-align: left;
-    padding: 10px;
+    padding: 6px;
     display: grid;
     font-size: 18px;
+    margin-top: 40px;
+}
+
+table {
+    width: 500px;
+    border-collapse: collapse;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    border-bottom: 1px solid rgb(228, 228, 228);
+    border-left: 1px solid rgb(228, 228, 228);
+    border-right: 1px solid rgb(228, 228, 228);
+}
+
+td:last-child, th:last-child {
+    border-right: 0px;
+}
+
+th, td {
+    padding: 15px;
+    border-right: 1px solid #eeeeee;
+}
+
+tr#headers {
+    background-color: #eeeeee;
 }

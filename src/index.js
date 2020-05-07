@@ -73,76 +73,56 @@ function renderPageElements(plantsArr) {
 
 function plantFlashcard(plant) {
     let pageContainer = document.querySelector(".card-intro")
-
-    // clear out all flashcards???
-
-    // if (pageContainer.querySelector(".flashcard")) {
-    //     let existingFlashcards = pageContainer.getElementsByClassName('flashcard')        
-    //     while(existingFlashcards.length > 0) {
-    //         existingFlashcards[0].remove();
-    //      }
-    // }
-
-    let innerCard = document.getElementById("plant-info")
+    
+    let innerCard = pageContainer.querySelector("#plant-info")
     innerCard.innerHTML = ""
 
-    let plantImage = document.createElement("img")
-    plantImage.id = "plant-image"
-    plantImage.src = plant.image
-
     let plantName = document.createElement("h1")
-    plantName.id = "plant-name"
     plantName.innerText = plant.name
 
+    let plantImage = document.createElement("img")
+    plantImage.src = plant.image
     innerCard.append(plantName, plantImage)
 
-    plant.flashcards.forEach((flashcard) => {
-        let pageContainer = document.querySelector(".card-intro")
-
-        let flashcardContainer = document.createElement("div")
-        flashcardContainer.classList.add("card", "flashcard")
-        flashcardContainer.id = `number-${flashcard.id}`
-
-        pageContainer.append(flashcardContainer)
-
-        loadFront(flashcard)
-    })
+    loadFront(plant)
 }
 
-function loadFront(flashcard) {
-    let pageContainer = document.querySelector(".card-intro")
-    let flashcardContainer = pageContainer.querySelector(`#number-${flashcard.id}`)
+function loadFront(plant) {
+    let pageContainer = document.querySelector(".card-intro")    
+    let flashcard_1 = pageContainer.querySelector("#flash-1")    
+
+    flashcard_1.innerHTML = ""
 
     let factTitle = document.createElement("h2")
     factTitle.classList.add("flip-card-front", "title")
-    factTitle.innerText = flashcard.fact_title
+    factTitle.innerText = plant.flashcards[0].fact_title
 
-    flashcardContainer.append(factTitle)
+    flashcard_1.append(factTitle)
 
-    flashcardContainer.addEventListener("click", () => {
-        flashcardContainer.innerHTML = ""
-        loadBack(flashcard)
+    flashcard_1.addEventListener("click", () => {
+        flashcard_1.innerHTML = ""
+        loadBack(plant)
     })
 }
 
-function loadBack(flashcard) {
-    let pageContainer = document.querySelector(".card-intro")
-    let flashcardContainer = pageContainer.querySelector(`#number-${flashcard.id}`)
+function loadBack(plant) {
+    let pageContainer = document.querySelector(".card-intro")    
+    let flashcard_1 = pageContainer.querySelector("#flash-1")    
 
     let emojiRating = document.createElement("p")
     emojiRating.classList.add("flip-card-back", "rating")
-    emojiRating.innerText = flashcard.emoji_rating
+    emojiRating.innerText = plant.flashcards[0].emoji_rating
 
     let lineBreak = document.createElement("br")
 
     let factContent = document.createElement("p")
     factContent.classList.add("flip-card-back", "content")
-    factContent.innerText = flashcard.fact_content
+    factContent.innerText = plant.flashcards[0].fact_content
 
-    flashcardContainer.append(emojiRating, lineBreak, factContent)
+    flashcard_1.append(emojiRating, lineBreak, factContent)
 
-    flashcardContainer.addEventListener("click", () => {
-        flashcardContainer.innerHTML = ""
-        loadFront(flashcard)
+    flashcard_1.addEventListener("click", () => {
+        flashcard_1.innerHTML = ""
+        loadFront(plant)
     })
 }

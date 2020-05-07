@@ -9,6 +9,11 @@ function createPlayerAction() {
 
     let newUserForm = document.querySelector(".create-user")
     let usernameInput = document.getElementById("username-input")
+    usernameInput.value = localStorage.username
+
+    // use `localStorage` to store the inputted username
+    // since localStorage is universal, call this variable to edit and delete?
+    // grab localStorage and use it on different pages
 
     newUserForm.addEventListener("submit", (event) => {
         event.preventDefault()
@@ -26,8 +31,16 @@ function createPlayerAction() {
             })
         })
         .then(r => r.json())
-        .then(() => {
-            loadScoreboard()
+        .then((newPlayer) => {
+            // push the new player into the players array
+            // call a function like renderPlayersArray
+            // playersArr.push(newPlayer)
+            renderPlayersArr()
+            loadScoreboard(playersArr)
         })
     })
+}
+
+function renderPlayersArr() {
+
 }

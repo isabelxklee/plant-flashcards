@@ -2,6 +2,7 @@ function renderPlayers(playersURL) {
     fetch(playersURL)
         .then(r => r.json())
         .then((playersArr) => {
+            console.log(playersArr)
             loadScoreboard(playersArr)
             learningModeLinkAction()
             quizTimeLinkAction()
@@ -33,6 +34,7 @@ function loadScoreboard(playersArr) {
 
     let ranking = 0
 
+    // server error 500 is returning undefined for this console.log statement
     console.log(playersArr)
 
     // sort the players by highscore

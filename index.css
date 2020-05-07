@@ -200,7 +200,7 @@ p.flip-card-back.content {
 p#plant-count {
     font-size: 16px;
     font-weight: 700;
-    margin-top: 50px;
+    /* margin-top: 50px; */
 }
 
 input {

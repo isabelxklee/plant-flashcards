@@ -28,14 +28,25 @@ function renderQuizElements(questionsArr) {
     let nextQuestion = document.getElementById("next-question")
     nextQuestion.classList.add("incorrect")
 
+    let quizIntro = document.querySelector(".page-container")
+    let numberOfQuestions = questionsArr.length
+    let questionCount = quizIntro.querySelector("#plant-count")
+    questionCount.innerText = `${questionIndex + 1} / ${numberOfQuestions} questions`
+
     answerOptionLoop(questionsArr[questionIndex], questionsArr)
 
-    nextQuestion.addEventListener("click", (event) => {
+    nextQuestion.addEventListener("click", () => {
+        let quizIntro = document.querySelector(".page-container")
+        let numberOfQuestions = questionsArr.length
+        let questionCount = quizIntro.querySelector("#plant-count")
+
         questionIndex = questionIndex + 1
         console.log(`Question #${questionIndex + 1}`)
 
         answerOptions.innerHTML = ""
         questionStatement.innerText = `${questionsArr[questionIndex].content}`
+
+        questionCount.innerText = `${questionIndex + 1} / ${numberOfQuestions} questions`
 
         answerStatus.innerText = ""
 
@@ -70,7 +81,7 @@ function answerOptionLoop(singleQuestion, questionsArr) {
     
                 answerStatus.innerText = "Correct! 🎉"
     
-                scoreCount = scoreCount + 100
+                scoreCount = scoreCount + 50
                 scoreKeeper.innerText = `Score: ${scoreCount}`
     
                 nextQuestion.classList.remove("incorrect")

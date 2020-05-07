@@ -40,7 +40,7 @@ let quizTime = `
     ${header}
 
     <div class="page-container">
-        <p id="card-count"></p>
+        <p id="plant-count"></p><br>
         
         <h1 id="question"></h1>
         <div class="answer-options">

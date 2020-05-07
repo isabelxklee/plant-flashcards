@@ -34,8 +34,20 @@ function renderPageElements(plantsArr) {
 
     let indexPosition = 0
 
+    if (indexPosition === 0) {
+        console.log("This is the 1st plant")
+        backButton.classList.add("incorrect")   
+    } 
+
     nextButton.addEventListener("click", () => {
-        // clear out all flashcards
+        backButton.classList.remove("incorrect")
+
+        let lastPlant = plantsArr.length - 2
+
+        if (indexPosition === lastPlant) {
+            console.log("This is the 4th plant")
+            nextButton.classList.add("incorrect")
+        }
 
         indexPosition = indexPosition + 1
         plantFlashcard(plantsArr[indexPosition])
@@ -44,9 +56,16 @@ function renderPageElements(plantsArr) {
     })
 
     backButton.addEventListener("click", () => {
+        nextButton.classList.remove("incorrect")
+
         indexPosition = indexPosition - 1
         plantFlashcard(plantsArr[indexPosition])
         plantCount.innerText = `${indexPosition + 1} / ${plantsArr.length} plants`
+
+        if (indexPosition === 0) {
+            console.log("This is the 1st plant")
+            backButton.classList.add("incorrect")   
+        }
 
         console.log(`Index position: ${indexPosition}`)
     })
@@ -55,12 +74,14 @@ function renderPageElements(plantsArr) {
 function plantFlashcard(plant) {
     let pageContainer = document.querySelector(".card-intro")
 
-    if (pageContainer.querySelector(".flashcard")) {
-        let existingFlashcards = pageContainer.getElementsByClassName('flashcard')        
-        while(existingFlashcards.length > 0) {
-            existingFlashcards[0].remove();
-         }
-    }
+    // clear out all flashcards???
+
+    // if (pageContainer.querySelector(".flashcard")) {
+    //     let existingFlashcards = pageContainer.getElementsByClassName('flashcard')        
+    //     while(existingFlashcards.length > 0) {
+    //         existingFlashcards[0].remove();
+    //      }
+    // }
 
     let innerCard = document.getElementById("plant-info")
     innerCard.innerHTML = ""

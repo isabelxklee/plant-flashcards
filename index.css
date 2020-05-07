@@ -115,7 +115,6 @@ div.card-intro {
 }
 
 div#flashcards.card-intro {
-    margin-top: 75px;
     display: inline-flex;
     padding: 20px;
 }
@@ -123,6 +122,7 @@ div#flashcards.card-intro {
 div.card.flashcard {
     margin-right: 40px;
     margin-top: 70px;
+    cursor: pointer;
 }
 
 h1 {
@@ -197,9 +197,10 @@ p.flip-card-back.content {
     margin: 10px;
 }
 
-p.card-count {
+p#plant-count {
     font-size: 16px;
-    display: inline-block;
+    font-weight: 700;
+    margin-top: 50px;
 }
 
 input {

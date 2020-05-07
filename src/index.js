@@ -2,16 +2,13 @@ fetch(plantsURL)
     .then(r => r.json())
     .then((plantsArr) => {
         loadLearningMode(plantsArr)
-        learningModeLinkAction()
-        quizTimeLinkAction()
-        scoreboardLinkAction()
     })
 
 function learningModeLinkAction() {
     let learningModeLink = document.getElementById("learning-mode")
 
     learningModeLink.addEventListener("click", () => {
-        fetch(flashcardsURL)
+        fetch(plantsURL)
             .then(r => r.json())
             .then((plantsArr) => {
                 loadLearningMode(plantsArr)
@@ -21,13 +18,16 @@ function learningModeLinkAction() {
 
 function loadLearningMode(plantsArr) {
     document.body.innerHTML = learningMode
+    learningModeLinkAction()
+    quizTimeLinkAction()
+    scoreboardLinkAction()
     plantFlashcard(plantsArr[0])
-    // renderPageElements(plantsArr)
+    renderPageElements(plantsArr)
 }
 
 function renderPageElements(plantsArr) {
-    let cardCount = document.getElementById("card-count")
-    cardCount.innerText = `1 / ${plantsArr.length} cards`
+    let plantCount = document.getElementById("plant-count")
+    plantCount.innerText = `1 / ${plantsArr.length} plants`
 
     let backButton = document.getElementById("back-button")
     let nextButton = document.getElementById("next-button")
@@ -37,7 +37,7 @@ function renderPageElements(plantsArr) {
     nextButton.addEventListener("click", (event) => {
         indexPosition = indexPosition + 1
         renderFrontFlashcard(plantsArr[indexPosition])
-        cardCount.innerText = `${indexPosition + 1} / ${plantsArr.length} cards`
+        plantCount.innerText = `${indexPosition + 1} / ${plantsArr.length} plants`
 
         console.log(`Index position: ${indexPosition}`)
     })
@@ -45,7 +45,7 @@ function renderPageElements(plantsArr) {
     backButton.addEventListener("click", (event) => {
         indexPosition = indexPosition - 1
         renderFrontFlashcard(plantsArr[indexPosition])
-        cardCount.innerText = `${indexPosition + 1} / ${plantsArr.length} cards`
+        plantCount.innerText = `${indexPosition + 1} / ${plantsArr.length} plants`
 
         console.log(`Index position: ${indexPosition}`)
     })

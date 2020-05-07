@@ -22,18 +22,16 @@ let learningMode = `
         <div class="card" id="plant-info"><br>
         </div>
     </div>
+
+    <div id="flashcard-navigation">
+        <p id="plant-count"></p><br>
+        <div class="btn-group">
+            <button class="navigation" id="back-button">Previous</button>
+            <button class="navigation" id="next-button">Next</button>
+        </div>
+    </div>
 `
 
-{/*
-<h1>Click on the card to flip it.</h1>
-<div id="flashcard-navigation">
-<p id="card-count"></p>
-<div class="btn-group">
-    <button class="navigation" id="back-button">Previous</button>
-    <button class="navigation" id="next-button">Next</button>
-</div>
-</div>
-*/}
 
 // quiz game
 

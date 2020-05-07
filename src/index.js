@@ -34,17 +34,18 @@ function renderPageElements(plantsArr) {
 
     let indexPosition = 0
 
-    nextButton.addEventListener("click", (event) => {
-        indexPosition = indexPosition + 1
-        renderFrontFlashcard(plantsArr[indexPosition])
-        plantCount.innerText = `${indexPosition + 1} / ${plantsArr.length} plants`
+    nextButton.addEventListener("click", () => {
+        // clear out all flashcards
 
+        indexPosition = indexPosition + 1
+        plantFlashcard(plantsArr[indexPosition])
+        plantCount.innerText = `${indexPosition + 1} / ${plantsArr.length} plants`
         console.log(`Index position: ${indexPosition}`)
     })
 
-    backButton.addEventListener("click", (event) => {
+    backButton.addEventListener("click", () => {
         indexPosition = indexPosition - 1
-        renderFrontFlashcard(plantsArr[indexPosition])
+        plantFlashcard(plantsArr[indexPosition])
         plantCount.innerText = `${indexPosition + 1} / ${plantsArr.length} plants`
 
         console.log(`Index position: ${indexPosition}`)
@@ -53,6 +54,13 @@ function renderPageElements(plantsArr) {
 
 function plantFlashcard(plant) {
     let pageContainer = document.querySelector(".card-intro")
+
+    if (pageContainer.querySelector(".flashcard")) {
+        let existingFlashcards = pageContainer.getElementsByClassName('flashcard')        
+        while(existingFlashcards.length > 0) {
+            existingFlashcards[0].remove();
+         }
+    }
 
     let innerCard = document.getElementById("plant-info")
     innerCard.innerHTML = ""

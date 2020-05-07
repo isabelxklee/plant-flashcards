@@ -33,6 +33,8 @@ function loadScoreboard(playersArr) {
 
     let ranking = 0
 
+    console.log(playersArr)
+
     // sort the players by highscore
     playersArr.sort(function(a, b) {
         return (a['highscore'] < b['highscore']) ? 1 : ((a['highscore'] > b['highscore']) ? -1 : 0)

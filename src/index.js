@@ -21,7 +21,7 @@ function loadLearningMode(plantsArr) {
     learningModeLinkAction()
     quizTimeLinkAction()
     scoreboardLinkAction()
-    plantFlashcard(plantsArr[0])
+    loadFront(plantsArr[0])
     renderPageElements(plantsArr)
 }
 
@@ -50,7 +50,15 @@ function renderPageElements(plantsArr) {
         }
 
         indexPosition = indexPosition + 1
-        plantFlashcard(plantsArr[indexPosition])
+
+        let pageContainer = document.querySelector(".card-intro")
+        if (pageContainer.querySelector("#plant-info")) {
+            let plantInfo = pageContainer.querySelector("#plant-info")
+            plantInfo.innerHTML = ""
+        }
+
+        loadFront(plantsArr[indexPosition])
+
         plantCount.innerText = `${indexPosition + 1} / ${plantsArr.length} plants`
         console.log(`Index position: ${indexPosition}`)
     })
@@ -59,7 +67,7 @@ function renderPageElements(plantsArr) {
         nextButton.classList.remove("incorrect")
 
         indexPosition = indexPosition - 1
-        plantFlashcard(plantsArr[indexPosition])
+        loadFront(plantsArr[indexPosition])
         plantCount.innerText = `${indexPosition + 1} / ${plantsArr.length} plants`
 
         if (indexPosition === 0) {
@@ -71,58 +79,45 @@ function renderPageElements(plantsArr) {
     })
 }
 
-function plantFlashcard(plant) {
+function loadFront(plant) {
     let pageContainer = document.querySelector(".card-intro")
-    
-    let innerCard = pageContainer.querySelector("#plant-info")
-    innerCard.innerHTML = ""
+
+    let allDivs = pageContainer.getElementsByClassName("flashcard")
+
+    if (allDivs.length > 0) {
+        pageContainer.innerHTML = ""
+    }
+
+    let plantInfo = document.createElement("div")
+    plantInfo.classList.add("card")
+    plantInfo.id = "plant-info"
 
     let plantName = document.createElement("h1")
     plantName.innerText = plant.name
 
     let plantImage = document.createElement("img")
     plantImage.src = plant.image
-    innerCard.append(plantName, plantImage)
 
-    loadFront(plant)
-}
+    plantInfo.append(plantName, plantImage)
+    pageContainer.append(plantInfo)
 
-function loadFront(plant) {
-    let pageContainer = document.querySelector(".card-intro")    
-    let flashcard_1 = pageContainer.querySelector("#flash-1")    
+    plant.flashcards.forEach((flashcard) => {
+        let flashcardContainer = document.createElement("div")
+        flashcardContainer.classList.add("card", "flashcard")
 
-    flashcard_1.innerHTML = ""
+        let factTitle = document.createElement("h2")
+        factTitle.classList.add("title", "flip-card-front")
+        factTitle.innerText = flashcard.fact_title
 
-    let factTitle = document.createElement("h2")
-    factTitle.classList.add("flip-card-front", "title")
-    factTitle.innerText = plant.flashcards[0].fact_title
+        flashcardContainer.append(factTitle)
+        pageContainer.append(flashcardContainer)
 
-    flashcard_1.append(factTitle)
-
-    flashcard_1.addEventListener("click", () => {
-        flashcard_1.innerHTML = ""
-        loadBack(plant)
+        console.log(flashcard)
     })
 }
 
-function loadBack(plant) {
-    let pageContainer = document.querySelector(".card-intro")    
-    let flashcard_1 = pageContainer.querySelector("#flash-1")    
-
-    let emojiRating = document.createElement("p")
-    emojiRating.classList.add("flip-card-back", "rating")
-    emojiRating.innerText = plant.flashcards[0].emoji_rating
-
-    let lineBreak = document.createElement("br")
-
-    let factContent = document.createElement("p")
-    factContent.classList.add("flip-card-back", "content")
-    factContent.innerText = plant.flashcards[0].fact_content
-
-    flashcard_1.append(emojiRating, lineBreak, factContent)
-
-    flashcard_1.addEventListener("click", () => {
-        flashcard_1.innerHTML = ""
-        loadFront(plant)
-    })
-}
+// load the back of the card
+// flashcard_1.addEventListener("click", () => {
+//     flashcard_1.innerHTML = ""
+//     loadBack(plant)
+// })

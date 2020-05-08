@@ -112,12 +112,26 @@ function loadFront(plant) {
         flashcardContainer.append(factTitle)
         pageContainer.append(flashcardContainer)
 
-        console.log(flashcard)
+        flashcardContainer.addEventListener("click", () => {
+            console.log(event.target)
+
+            flashcardContainer.innerHTML = ""
+
+            let emojiRating = document.createElement("p")
+            emojiRating.classList.add("rating", "flip-card-back")
+            emojiRating.innerText = flashcard.emoji_rating
+
+            let linebreak = document.createElement("br")
+            
+            let factContent = document.createElement("p")
+            factContent.classList.add("flip-card-back", "content")
+            factContent.innerText = flashcard.fact_content
+
+            flashcardContainer.append(emojiRating, linebreak, factContent)
+
+            flashcardContainer.addEventListener("click", () => {
+                loadFront(plant)
+            })
+        })
     })
 }
-
-// load the back of the card
-// flashcard_1.addEventListener("click", () => {
-//     flashcard_1.innerHTML = ""
-//     loadBack(plant)
-// })

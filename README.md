@@ -13,7 +13,7 @@ Live demo: coming soon...
 * Play a quiz game to test your knowledge on plants
 * Log your score in a leaderboard
 
-![Quiz Time on Plant Flashcards](https://i.imgur.com/D91mNtK.png)
+![Quiz Time on Plant Flashcards](https://i.imgur.com/BsmKc9m.png)
 
 ## Domain Model
 Coming soon...

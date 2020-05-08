@@ -5,7 +5,7 @@ Plant Flashcards is a full-stack web application where you can flip through flas
 
 Live demo: coming soon...
 
-![Learning Mode on Plant Flashcards](https://i.imgur.com/WC98fWe.png)
+![Learning Mode on Plant Flashcards](https://i.imgur.com/F643LUN.png)
 
 ## Features
 

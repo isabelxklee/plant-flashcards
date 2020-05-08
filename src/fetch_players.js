@@ -1,8 +1,7 @@
-function renderPlayers(playersURL) {
+function renderPlayers() {
     fetch(playersURL)
         .then(r => r.json())
         .then((playersArr) => {
-            console.log(playersArr)
             loadScoreboard(playersArr)
             learningModeLinkAction()
             quizTimeLinkAction()
@@ -34,10 +33,6 @@ function loadScoreboard(playersArr) {
 
     let ranking = 0
 
-    // server error 500 is returning undefined for this console.log statement
-    console.log(playersArr)
-
-    // sort the players by highscore
     playersArr.sort(function(a, b) {
         return (a['highscore'] < b['highscore']) ? 1 : ((a['highscore'] > b['highscore']) ? -1 : 0)
     })

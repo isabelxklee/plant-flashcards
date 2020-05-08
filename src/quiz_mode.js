@@ -104,7 +104,7 @@ function answerOptionLoop(singleQuestion, questionsArr) {
         quizIntro.append(saveScore)
 
         saveScore.addEventListener("click", () => {
-            createPlayerAction()
+            loadAllPlayers()
         })
     } 
 }

@@ -149,24 +149,3 @@ function deleteUsername(playersArr) {
         } // end of if statement
     }) // end of foreach statement    
 } // end of function
-
-
-
-
-
-
-///////////////////////////////////
-function redirectToQuiz() {
-    let takeQuizButton = document.getElementById("take-quiz")
-    takeQuizButton.style.display = "block"
-
-    takeQuizButton.addEventListener("click", () => {
-        fetch(questionsURL)
-            .then(r => r.json())
-            .then((questionsArr) => {
-                loadQuizMode(questionsArr)
-                learningModeLinkAction()
-                scoreboardLinkAction()
-            })
-    })
-}

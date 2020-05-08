@@ -108,3 +108,19 @@ function answerOptionLoop(singleQuestion, questionsArr) {
         })
     } 
 }
+
+///////////////////////////////////
+function redirectToQuiz() {
+    let takeQuizButton = document.getElementById("take-quiz")
+    takeQuizButton.style.display = "block"
+
+    takeQuizButton.addEventListener("click", () => {
+        fetch(questionsURL)
+            .then(r => r.json())
+            .then((questionsArr) => {
+                loadQuizMode(questionsArr)
+                learningModeLinkAction()
+                scoreboardLinkAction()
+            })
+    })
+}

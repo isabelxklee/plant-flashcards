@@ -22,7 +22,10 @@ let learningMode = `
         <div class="btn-group">
             <button class="navigation" id="back-button">Previous</button>
             <button class="navigation" id="next-button">Next</button>
+            <button class="navigation" id="take-quiz">Take the plant quiz</button>
         </div>
+        
+        
     </div>
 `
 
@@ -84,6 +87,3 @@ let scoreboard = `
         </form>
     </div>
 `
-
-{/* <h3>Can you get a higher score than these players? 🤪</h3>
-<button class="navigation" id="take-quiz">Take the plant quiz</button> */}

@@ -29,6 +29,9 @@ function renderPageElements(plantsArr) {
     let plantCount = document.getElementById("plant-count")
     plantCount.innerText = `1 / ${plantsArr.length} plants`
 
+    let takeQuizButton = document.getElementById("take-quiz")
+    takeQuizButton.style.display = "none"
+
     let backButton = document.getElementById("back-button")
     let nextButton = document.getElementById("next-button")
 
@@ -45,8 +48,9 @@ function renderPageElements(plantsArr) {
         let lastPlant = plantsArr.length - 2
 
         if (indexPosition === lastPlant) {
-            console.log("This is the 4th plant")
             nextButton.classList.add("incorrect")
+            console.log("This is the last plant")
+            redirectToQuiz()
         }
 
         indexPosition = indexPosition + 1

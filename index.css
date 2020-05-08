@@ -30,7 +30,7 @@ a#site-info {
 }
 
 div.btn-group {
-    display: inline-block;
+    display: inline-flex;
 }
 
 button.navigation {
@@ -59,6 +59,8 @@ button#save.navigation {
 
 button#take-quiz.navigation {
     width: 200px;
+    background-color: rgb(43, 43, 43);
+    border: 2px solid rgb(43, 43, 43);
 }
 
 button#back-button.navigation {
@@ -262,4 +264,9 @@ th, td {
 
 tr#headers {
     background-color: #eeeeee;
+}
+
+.number-one {
+    font-weight: 700;
+    font-size: 18px;
 }

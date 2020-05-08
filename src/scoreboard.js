@@ -47,6 +47,9 @@ function loadScoreboard(playersArr) {
 
         if (ranking === 1) {
             usernameCell.innerText = `👑 ${player.username} 👑`
+            usernameCell.classList.add("number-one")
+            rankingCell.classList.add("number-one")
+            scoreCell.classList.add("number-one")
         }
     })
 }
@@ -155,6 +158,7 @@ function deleteUsername(playersArr) {
 ///////////////////////////////////
 function redirectToQuiz() {
     let takeQuizButton = document.getElementById("take-quiz")
+    takeQuizButton.style.display = "block"
 
     takeQuizButton.addEventListener("click", () => {
         fetch(questionsURL)

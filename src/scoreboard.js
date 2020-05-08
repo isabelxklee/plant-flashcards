@@ -3,6 +3,7 @@ function renderPlayers() {
         .then(r => r.json())
         .then((playersArr) => {
             loadScoreboard(playersArr)
+            deleteUsername(playersArr)
             learningModeLinkAction()
             quizTimeLinkAction()
         })
@@ -31,8 +32,10 @@ function loadScoreboard(playersArr) {
         ranking = ranking + 1
 
         let newRow = document.createElement("tr")
+        newRow.classList.add(`row-${ranking}`)
         let rankingCell = document.createElement("td")
         let usernameCell = document.createElement("td")
+        usernameCell.classList.add(`row-${ranking}`)
         let scoreCell = document.createElement("td")
 
         rankingCell.innerText = `${ranking}`
@@ -96,10 +99,58 @@ function editUsername(playersArr) {
                 } else {
                     editPlayerForm.style.display = "none"
                 }
+            }) // end of edit button event listener
+        } // end of if statement
+    }) // end of foreach statement
+} // end of function
+
+function deleteUsername(playersArr) {
+    let pageContainer = document.querySelector(".page-container")
+    let deleteButton = pageContainer.querySelector("#danger")
+    let currentUser = localStorage.getItem('username')
+
+    let scoreTable = document.getElementById("scoretable")
+    let tableRows = scoreTable.getElementsByTagName("tr")
+    let tableCells = scoreTable.getElementsByTagName("td")
+
+    Array.from(tableCells).forEach((cell) => { 
+        if (cell.innerText === currentUser) {
+            let usersCell = cell
+            let rowID = usersCell.className
+            console.log(usersCell)
+
+            Array.from(tableRows).forEach((row) => {
+                if (row.className === rowID) {
+                    let usersRow = row
+                    console.log(usersRow)
+                }
             })
-        }
-    })
-}
+
+            playersArr.forEach((player) => {
+            if (player.username === currentUser) {
+                let playerID = player.id
+                let singlePlayerURL = `http://localhost:3000/players/${playerID}`
+
+                deleteButton.addEventListener("click", (event) => {
+                    fetch(singlePlayerURL, {
+                        method: "DELETE"
+                    })
+                    .then(r => r.json())
+                    .then((emptyObj) => {
+                        console.log(emptyObj);
+                        usersRow.remove()
+                        })
+                    })
+                }
+            }) // end of for each statement   
+        } // end of if statement
+    }) // end of foreach statement    
+} // end of function
+
+
+
+
+
 
 ///////////////////////////////////
 function redirectToQuiz() {

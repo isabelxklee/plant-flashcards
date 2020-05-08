@@ -6,7 +6,7 @@ function loadAllPlayers() {
         })
 }
 
-function createPlayerAction() {
+function createPlayerAction(playersArr) {
     document.body.innerHTML = createPlayer
     learningModeLinkAction()
     quizTimeLinkAction()
@@ -15,10 +15,10 @@ function createPlayerAction() {
     let scoreKeeper = document.getElementById("score")
     scoreKeeper.innerText = `Score: ${scoreCount}`
 
-    formAction()
+    formAction(playersArr)
 }
 
-function formAction() {
+function formAction(playersArr) {
     let newUserForm = document.querySelector(".create-user")
     let usernameInput = document.getElementById("username-input")
 

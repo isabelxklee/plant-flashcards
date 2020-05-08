@@ -74,7 +74,16 @@ let scoreboard = `
             </tr>
         </table>
 
-        <h3>Can you get a higher score than these players? 🤪</h3>
-        <button class="navigation" id="take-quiz">Take the plant quiz</button>
+        <button class="navigation" id="edit">Edit username</button>
+        <button class="navigation" id="danger">Delete score</button>
+
+        <form class="edit-user">
+            <label for="username">Edit username</label><br>
+            <input type="text" name="username" id="username-input"/><br>
+            <button class="navigation" type="submit" id="create-user">Save</button>
+        </form>
     </div>
 `
+
+{/* <h3>Can you get a higher score than these players? 🤪</h3>
+<button class="navigation" id="take-quiz">Take the plant quiz</button> */}

@@ -67,6 +67,12 @@ button#back-button.navigation {
     border: 2px solid rgb(23, 99, 75);
 }
 
+button#danger.navigation {
+    background-color: rgb(176, 32, 0);
+    color: white;
+    border: 2px solid rgb(176, 32, 0);
+}
+
 button.navigation:hover {
     opacity: 0.5;
 }
@@ -215,9 +221,19 @@ input {
     width: 300px;
     padding-left: 14px;
     display: inline-block;
+    font-family: "Ringside Wide", "Montserrat", sans-serif; 
+    font-size: 14px;
 }
 
 form.create-user {
+    text-align: left;
+    padding: 6px;
+    display: grid;
+    font-size: 18px;
+    margin-top: 40px;
+}
+
+form.edit-user {
     text-align: left;
     padding: 6px;
     display: grid;

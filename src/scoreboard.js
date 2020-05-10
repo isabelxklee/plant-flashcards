@@ -149,7 +149,7 @@ function editUsername(playersArr) {
         .then((response) => {
             if (response.id) {
                 console.log("Success!")
-                
+
                 let rowID = findUsersCell()[0]
                 let usersRow = scoreTable.getElementsByClassName(rowID)
                 let usersCell = usersRow[1]
@@ -171,6 +171,7 @@ function editUsername(playersArr) {
 function deleteUsername(playersArr) {
     let pageContainer = document.querySelector(".page-container")
     let deleteButton = pageContainer.querySelector("#danger")
+    let editButton = pageContainer.querySelector("#edit")
 
     let singlePlayer = findSinglePlayerURL(playersArr)
     let usersRow = findTableRow()
@@ -190,6 +191,8 @@ function deleteUsername(playersArr) {
             console.log(usersRow);
             usersRow.remove()
             localStorage.clear()
+            deleteButton.classList.add("incorrect")
+            editButton.classList.add("incorrect")
             })
         })
 }

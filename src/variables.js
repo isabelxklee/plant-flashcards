@@ -1,11 +1,14 @@
-let plantsURL = `http://localhost:3000/plants`
-let flashcardsURL = `http://localhost:3000/flashcards`
-let questionsURL = `http://localhost:3000/questions`
-let playersURL = `http://localhost:3000/players`
+let URL = `https://plant-flashcards.herokuapp.com/`
+// let URL = `http://localhost:3000`
+
+let plantsURL = `${URL}/plants`
+let flashcardsURL = `${URL}/flashcards`
+let questionsURL = `${URL}/questions`
+let playersURL = `${URL}/players`
 
 let body = document.querySelector("body")
 let scoreCount = 0
-let questionIndex = 7
+let questionIndex = 0
 let editPlayer = false
 
 let currentUser = localStorage.getItem('username')

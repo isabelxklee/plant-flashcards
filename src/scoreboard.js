@@ -61,7 +61,7 @@ function findSinglePlayerURL(playersArr) {
     playersArr.forEach((player) => {
         if (player.username === currentUser) {
             playerID = player.id
-            singlePlayerURL = `http://localhost:3000/players/${playerID}`
+            singlePlayerURL = `${playersURL}/${playerID}`
         }
     })
 

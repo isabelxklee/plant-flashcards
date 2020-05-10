@@ -12,6 +12,7 @@ Live demo: coming soon...
 * Flip through flashcards to learn plant facts
 * Play a quiz game to test your knowledge on plants
 * Log your score in a leaderboard
+* CRUD operations for players
 
 ![Quiz Time on Plant Flashcards](https://i.imgur.com/BsmKc9m.png)
 

@@ -3,7 +3,7 @@ Plant Flashcards
 
 Plant Flashcards is a full-stack web application where you can flip through flashcards to learn about plants and test your knowledge. Made by [Isabel K. Lee](https://www.kleetime.com).
 
-Live demo: coming soon...
+Live demo: https://plant-flashcards.netlify.app
 
 ![Learning Mode on Plant Flashcards](https://i.imgur.com/F643LUN.png)
 

@@ -7,3 +7,5 @@ let body = document.querySelector("body")
 let scoreCount = 0
 let questionIndex = 0
 let editPlayer = false
+
+let currentUser = localStorage.getItem('username')

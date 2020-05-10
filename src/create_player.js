@@ -41,7 +41,7 @@ function formAction(playersArr) {
         .then(r => r.json())
         .then((response) => {
             if (response.id) {
-                loadScoreboard(playersArr) 
+                loadScoreboard(playersArr)
             } else {
                 console.log("This did not save.")
             }

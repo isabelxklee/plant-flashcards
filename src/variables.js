@@ -5,7 +5,7 @@ let playersURL = `http://localhost:3000/players`
 
 let body = document.querySelector("body")
 let scoreCount = 0
-let questionIndex = 0
+let questionIndex = 7
 let editPlayer = false
 
 let currentUser = localStorage.getItem('username')

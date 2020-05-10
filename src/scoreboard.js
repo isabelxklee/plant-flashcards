@@ -68,11 +68,48 @@ function findSinglePlayerURL(playersArr) {
     return singlePlayerURL
 }
 
+function findTableRow() {
+    let scoreTable = document.getElementById("scoretable")
+    let tableRows = scoreTable.getElementsByTagName("tr")
+    let usersRow = ""
+    let rowID = findUsersCell()[0]
+
+    Array.from(tableRows).forEach((row) => {
+        if (row.className === rowID) {
+            usersRow = row
+        }
+    })
+    return usersRow
+}
+
+function findUsersCell() {
+    let scoreTable = document.getElementById("scoretable")
+    let tableCells = scoreTable.getElementsByTagName("td")
+    let usersCell = ""
+    let rowID = ""
+
+    Array.from(tableCells).forEach((cell) => { 
+        if (cell.innerText === currentUser) {
+            usersCell = cell
+            rowID = usersCell.className
+        }
+    })
+
+    let usersArr = [rowID, usersCell]
+    return usersArr
+}
+
 function toggleEditForm() {
     let pageContainer = document.querySelector(".page-container")
     let editButton = pageContainer.querySelector("#edit")
     let editPlayerForm = pageContainer.querySelector(".edit-user")
     let usernameInput = editPlayerForm.querySelector("input")
+
+    if (localStorage.length === 0) {
+        editButton.classList.add("incorrect")
+    } else {
+        editButton.classList.remove("incorrect")
+    }
 
     editButton.addEventListener("click", () => {
         editPlayer = !editPlayer
@@ -87,6 +124,7 @@ function toggleEditForm() {
 
 function editUsername(playersArr) {
     let pageContainer = document.querySelector(".page-container")
+    let scoreTable = document.getElementById("scoretable")
     let editPlayerForm = pageContainer.querySelector(".edit-user")
     let usernameInput = editPlayerForm.querySelector("input")
 
@@ -94,7 +132,6 @@ function editUsername(playersArr) {
     editPlayerForm.style.display = "none"
 
     let singlePlayer = findSinglePlayerURL(playersArr)
-    console.log(singlePlayer)
 
     editPlayerForm.addEventListener("submit", (event) => {
         event.preventDefault()
@@ -112,9 +149,17 @@ function editUsername(playersArr) {
         .then((response) => {
             if (response.id) {
                 console.log("Success!")
-                localStorage.setItem('username', usernameInput.value)
-                usernameInput.value = currentUser
-                console.log(currentUser)
+                
+                let rowID = findUsersCell()[0]
+                let usersRow = scoreTable.getElementsByClassName(rowID)
+                let usersCell = usersRow[1]
+
+                console.log(usersRow, usersCell)
+ 
+                usersCell.innerText = usernameInput.value
+                editPlayerForm.style.display = "none"
+                localStorage.setItem('username', usernameInput.value)  
+                
             } else {
                 console.log("This did not save.")
             }
@@ -129,41 +174,22 @@ function deleteUsername(playersArr) {
 
     let singlePlayer = findSinglePlayerURL(playersArr)
     let usersRow = findTableRow()
-    console.log(singlePlayer, usersRow)
+
+    if (localStorage.length === 0) {
+        deleteButton.classList.add("incorrect")
+    } else {
+        deleteButton.classList.remove("incorrect")
+    }
 
     deleteButton.addEventListener("click", () => {
         fetch(singlePlayer, {
             method: "DELETE"
         })
         .then(r => r.json())
-        .then((emptyObj) => {
-            console.log(emptyObj);
+        .then(() => {
+            console.log(usersRow);
             usersRow.remove()
+            localStorage.clear()
             })
         })
-}
-
-function findTableRow() {
-    let scoreTable = document.getElementById("scoretable")
-    let tableRows = scoreTable.getElementsByTagName("tr")
-    let tableCells = scoreTable.getElementsByTagName("td")
-    let usersCell = ""
-    let rowID = ""
-    let usersRow = ""
-
-    Array.from(tableCells).forEach((cell) => { 
-        if (cell.innerText === currentUser) {
-            usersCell = cell
-            rowID = usersCell.className
-            console.log(usersCell)
-
-            Array.from(tableRows).forEach((row) => {
-                if (row.className === rowID) {
-                    usersRow = row
-                    console.log(usersRow)
-                }
-            })
-        }
-    })
-    return usersRow
 }

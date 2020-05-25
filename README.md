@@ -29,5 +29,5 @@ Coming soon...
 
 ## Tools
 
-* [Rack CORS](https://github.com/cyu/rack-cors): description
-* [ActiveModel::Serializer](https://github.com/rails-api/active_model_serializers): description
+* [Rack CORS](https://github.com/cyu/rack-cors)
+* [ActiveModel::Serializer](https://github.com/rails-api/active_model_serializers)

@@ -1,7 +1,7 @@
 Plant Flashcards
 ========================
 
-Plant Flashcards is a full-stack web application where you can flip through flashcards to learn about plants and test your knowledge. Made by [Isabel K. Lee](https://www.kleetime.com).
+Plant Flashcards is a full-stack web application where you can flip through flashcards to learn about plants and test your knowledge.
 
 Live demo: https://plant-flashcards.netlify.app
 
@@ -9,10 +9,22 @@ Live demo: https://plant-flashcards.netlify.app
 
 ## Features
 
+### Asynchronous fetches
+* Pulls in data about plants from the Rails backend API
+
+### CRUD Operations
+* Users can save their high scores, edit their usernames, and delete their scores
+* All scores are displayed on a scoreboard
+
+### ActiveRecord Associations
+* There are 6 models that have `has_many`, `belongs_to` and `has_many through` associations
+* Uses ActiveModelSerializers, which turns model attributes into JSON object keys
+* Regex validations for username input
+
+### Other Features
+* 100% custom CSS
 * Flip through flashcards to learn plant facts
 * Play a quiz game to test your knowledge on plants
-* CRUD operations for players
-* See everyone else's scores in a ranked list
 
 ![Quiz Time on Plant Flashcards](https://i.imgur.com/BsmKc9m.png)
 

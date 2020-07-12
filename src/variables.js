@@ -1,6 +1,6 @@
-// let URL = `https://plant-flashcards.herokuapp.com`
+let URL = `https://plant-flashcards.herokuapp.com`
 // let URL = `https://test-plants.herokuapp.com`
-let URL = `http://localhost:3000`
+// let URL = `http://localhost:3000`
 
 let plantsURL = `${URL}/plants`
 let flashcardsURL = `${URL}/flashcards`

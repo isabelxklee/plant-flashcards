@@ -88,6 +88,10 @@ function findUsersCell() {
     let usersCell = ""
     let rowID = ""
 
+    console.log(tableCells.forEach((cell) => {
+        return cell
+    }))
+
     Array.from(tableCells).forEach((cell) => { 
         if (cell.innerText === currentUser) {
             usersCell = cell

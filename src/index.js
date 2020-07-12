@@ -2,6 +2,7 @@ fetch(plantsURL)
     .then(r => r.json())
     .then((plantsArr) => {
         loadLearningMode(plantsArr)
+        console.log(plantsArr)
     })
 
 function learningModeLinkAction() {

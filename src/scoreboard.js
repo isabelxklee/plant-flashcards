@@ -88,19 +88,17 @@ function findUsersCell() {
     let usersCell = ""
     let rowID = ""
 
-    console.log(tableCells.forEach((cell) => {
-        return cell
-    }))
-
-    Array.from(tableCells).forEach((cell) => { 
+    if (localStorage.username) {
+      Array.from(tableCells).forEach((cell) => { 
         if (cell.innerText === currentUser) {
-            usersCell = cell
-            rowID = usersCell.className
+          usersCell = cell
+          rowID = usersCell.className
         }
-    })
+      })
 
-    let usersArr = [rowID, usersCell]
-    return usersArr
+      let usersArr = [rowID, usersCell]
+      return usersArr
+    }
 }
 
 function toggleEditForm() {
@@ -151,23 +149,18 @@ function editUsername(playersArr) {
         })
         .then(r => r.json())
         .then((response) => {
-            if (response.id) {
-                console.log("Success!")
-
-                let rowID = findUsersCell()[0]
-                let usersRow = scoreTable.getElementsByClassName(rowID)
-                let usersCell = usersRow[1]
-
-                console.log(usersRow, usersCell)
- 
-                usersCell.innerText = usernameInput.value
-                editPlayerForm.style.display = "none"
-                localStorage.setItem('username', usernameInput.value)  
-                
-            } else {
-                console.log("This did not save.")
-            }
-            event.target.reset()
+          if (response.id) {
+            console.log("Success!")
+            localStorage.setItem('username', usernameInput.value)  
+            // let rowID = findUsersCell()[0]
+            // let usersRow = scoreTable.getElementsByClassName(rowID)
+            // let usersCell = usersRow[1]
+            // usersCell.innerText = usernameInput.value
+            editPlayerForm.style.display = "none"              
+          } else {
+            console.log("This did not save.")
+          }
+          event.target.reset()
         })
     })
 }

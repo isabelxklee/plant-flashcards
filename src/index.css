@@ -1,0 +1,272 @@
+body {
+  margin: 0px;
+  font-family: "Ringside Wide", "Karla", sans-serif; 
+  text-align: center;
+}
+
+.header {
+  overflow: hidden;
+  background-color: rgb(43, 43, 43);
+  padding: 20px;
+}
+
+.header a {
+float: left;
+color: white;
+text-align: center;
+padding: 4px 20px;
+text-decoration: none;
+font-size: 18px; 
+line-height: 25px;
+}
+
+.header a.logo {
+  cursor: default;
+}
+
+a#site-info {
+  font-size: 14px;
+  float: right;
+}
+
+div.btn-group {
+  display: inline-flex;
+}
+
+button.navigation {
+  border: 2px solid rgb(23, 99, 75);
+  background-color: rgb(23, 99, 75);
+  font-family: "Ringside Wide", "Karla", sans-serif; 
+  font-weight: 500;
+  border-radius: 4px;
+  color: white;
+  padding: 12px;
+  width: 150px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 4px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+button#save.navigation {
+  background-color: white;
+  color: rgb(23, 99, 75);
+  border: 2px solid rgb(23, 99, 75);
+  display: inline-block;
+}
+
+button#take-quiz.navigation {
+  width: 200px;
+  background-color: rgb(43, 43, 43);
+  border: 2px solid rgb(43, 43, 43);
+}
+
+button#back-button.navigation {
+  background-color: white;
+  color: rgb(23, 99, 75);
+  border: 2px solid rgb(23, 99, 75);
+}
+
+button#danger.navigation {
+  background-color: rgb(176, 32, 0);
+  color: white;
+  border: 2px solid rgb(176, 32, 0);
+}
+
+button.navigation:hover {
+  opacity: 0.5;
+}
+
+div.answer-options {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+div.answer-options button {
+  background-color: rgb(23, 99, 75);
+  font-family: "Ringside Wide", "Karla", sans-serif; 
+  border-radius: 4px;
+  border: none;
+  color: white;
+  padding: 18px;
+  width: 400px;
+  text-decoration: none;
+  font-size: 18px;
+  margin: 0px 20px 10px 0px;
+  transition-duration: 0.2s;
+  cursor: pointer;
+  display: block;
+}
+
+.incorrect {
+  opacity: 0.25;
+  cursor: not-allowed;
+  pointer-events:none;
+}
+
+div.answer-options button.correct {
+  background-color: rgb(52, 47, 147);
+  color: white;
+  cursor: not-allowed;
+  pointer-events:none;
+}
+
+#flashcard-navigation {
+  padding-top: 14px;
+}
+
+.disabled {
+  opacity: 0.5;
+}
+
+div.card-intro {
+  margin-top: 50px;
+  display: inline-block;
+  text-align: center;
+}
+
+div#flashcards.card-intro {
+  display: inline-flex;
+  padding: 20px;
+}
+
+div.card.flashcard {
+  margin-right: 40px;
+  margin-top: 70px;
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 28px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+div.page-container {
+  display: inline-block;
+  margin-top: 50px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border-radius: 5px;
+  width: 250px;
+  height: 300px;
+  display: inline-block;
+  text-align: center;
+  font-family: "Ringside Wide", "Karla", sans-serif;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 5px;
+  height: 300px;
+  object-fit: cover;
+}
+
+div#plant-info.card {
+  box-shadow: none;
+  margin-right: 40px;
+}
+
+.flip-card-front {
+  width: 100%;
+  backface-visibility: hidden;
+  text-align: center;
+}
+
+h2.flip-card-front.title {
+  font-size: 20px;
+  font-weight: 700;
+  padding-top: 40px;
+}
+
+.flip-card-back {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: inline-block;
+}
+
+p.flip-card-back.rating {
+  font-size: 35px;
+  margin: 10px;
+  padding-top: 40px;
+}
+
+p.flip-card-back.content {
+  font-family: "Ringside Wide", "Montserrat", sans-serif; 
+  line-height: 30px;
+  font-size: 22px;
+  margin: 10px;
+}
+
+p#plant-count {
+  font-size: 16px;
+  font-weight: 700;
+  /* margin-top: 50px; */
+}
+
+input {
+  border: 2px solid rgb(23, 99, 75);
+  border-radius: 4px;
+  height: 40px;
+  width: 300px;
+  padding-left: 14px;
+  display: inline-block;
+  font-family: "Ringside Wide", "Montserrat", sans-serif; 
+  font-size: 14px;
+}
+
+form.create-user {
+  text-align: left;
+  padding: 6px;
+  display: grid;
+  font-size: 18px;
+  margin-top: 40px;
+}
+
+form.edit-user {
+  text-align: left;
+  padding: 6px;
+  display: grid;
+  font-size: 18px;
+  margin-top: 40px;
+}
+
+table {
+  width: 500px;
+  border-collapse: collapse;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  border-bottom: 1px solid rgb(228, 228, 228);
+  border-left: 1px solid rgb(228, 228, 228);
+  border-right: 1px solid rgb(228, 228, 228);
+}
+
+td:last-child, th:last-child {
+  border-right: 0px;
+}
+
+th, td {
+  padding: 15px;
+  border-right: 1px solid #eeeeee;
+}
+
+tr#headers {
+  background-color: #eeeeee;
+}
+
+.number-one {
+  font-weight: 700;
+  font-size: 18px;
+}

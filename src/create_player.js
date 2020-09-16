@@ -25,7 +25,6 @@ function formAction(playersArr) {
   newUserForm.addEventListener("submit", (event) => {
     event.preventDefault()
     localStorage.setItem('username', usernameInput.value)
-    // let currentUser = localStorage.getItem('username')
 
     fetch(playersURL, {
       method: "POST",
@@ -38,9 +37,10 @@ function formAction(playersArr) {
       })
     })
     .then(r => r.json())
-    .then((response) => {
-      if (response.id) {
+    .then((player) => {
+      if (player.id) {
         loadScoreboard(playersArr)
+        addNewPlayer(player)
       }
       event.target.reset()
     })

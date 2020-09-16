@@ -6,6 +6,7 @@ function renderPlayers() {
     deleteUsername(playersArr)
     learningModeLinkAction()
     quizTimeLinkAction()
+    console.log(playersArr)
   })
 }
 
@@ -52,6 +53,27 @@ function loadScoreboard(playersArr) {
       scoreCell.classList.add("number-one")
     }
   })
+}
+
+function addNewPlayer(player, playersArr) {
+  console.log(player)
+
+  let scoreTable = document.getElementById("scoretable")
+  let ranking = 5
+
+  let newRow = document.createElement("tr")
+  newRow.classList.add(`row-${ranking}`)
+  let rankingCell = document.createElement("td")
+  let usernameCell = document.createElement("td")
+  usernameCell.classList.add(`row-${ranking}`)
+  let scoreCell = document.createElement("td")
+
+  rankingCell.innerText = `${ranking}`
+  usernameCell.innerText = player.username
+  scoreCell.innerText = player.highscore
+
+  newRow.append(rankingCell, usernameCell, scoreCell)
+  scoreTable.append(newRow)
 }
 
 function findCurrentPlayer(playersArr) {

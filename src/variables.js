@@ -1,5 +1,5 @@
-let URL = `https://plant-flashcards-backend.herokuapp.com`
-// let URL = `http://localhost:3000`
+// let URL = `https://plant-flashcards-backend.herokuapp.com`
+let URL = `http://localhost:3000`
 
 let plantsURL = `${URL}/plants`
 let flashcardsURL = `${URL}/flashcards`

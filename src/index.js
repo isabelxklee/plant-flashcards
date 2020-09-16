@@ -9,10 +9,10 @@ function learningModeLinkAction() {
 
   learningModeLink.addEventListener("click", () => {
     fetch(plantsURL)
-      .then(r => r.json())
-      .then((plantsArr) => {
-        loadLearningMode(plantsArr)
-      })
+    .then(r => r.json())
+    .then((plantsArr) => {
+      loadLearningMode(plantsArr)
+    })
   })
 }
 

@@ -32,10 +32,10 @@ function loadScoreboard(playersArr) {
     ranking = ranking + 1
 
     let newRow = document.createElement("tr")
-    newRow.classList.add(`row-${ranking}`)
+    newRow.classList.add(`user-${player.id}`)
     let rankingCell = document.createElement("td")
     let usernameCell = document.createElement("td")
-    usernameCell.classList.add(`row-${ranking}`)
+    usernameCell.id = `user-${player.id}`
     let scoreCell = document.createElement("td")
 
     rankingCell.innerText = `${ranking}`
@@ -145,7 +145,6 @@ function toggleEditForm() {
 
 function editUsername(playersArr) {
   let pageContainer = document.querySelector(".page-container")
-  let scoreTable = document.getElementById("scoretable")
   let editPlayerForm = pageContainer.querySelector(".edit-user")
   let usernameInput = editPlayerForm.querySelector("input")
 
@@ -168,17 +167,17 @@ function editUsername(playersArr) {
     })
     .then(r => r.json())
     .then((response) => {
-      if (response.id) {
-        localStorage.setItem('username', usernameInput.value)  
-        let rowID = findUsersCell()[0]
-        let usersRow = scoreTable.getElementsByClassName(rowID)
-        let usersCell = usersRow[1]
-        usersCell.innerText = usernameInput.value
-        editPlayerForm.style.display = "none"              
-      }
+      updateUsername(response)
       event.target.reset()
     })
   })
+}
+
+function updateUsername(player) {
+  let scoreTable = document.getElementById("scoretable")
+  localStorage.setItem('username', player.username)
+  let userCell = scoreTable.querySelector(`#user-${player.id}`)
+  userCell.innerText = player.username
 }
 
 function deleteUsername(playersArr) {
@@ -187,7 +186,10 @@ function deleteUsername(playersArr) {
   let editButton = pageContainer.querySelector("#edit")
   let scoreTable = document.getElementById("scoretable")
 
-  let singlePlayerURL = `${playersURL}/${findCurrentPlayer(playersArr)}`
+  let userID = findCurrentPlayer(playersArr)
+  let userRow = scoreTable.querySelector(`tr.user-${userID}`)
+
+  let singlePlayerURL = `${playersURL}/${userID}`
 
   if (localStorage.length === 0) {
     deleteButton.classList.add("incorrect")
@@ -201,9 +203,7 @@ function deleteUsername(playersArr) {
     })
     .then(r => r.json())
     .then(() => {
-      let rowID = findUsersCell()[0]
-      let usersRow = scoreTable.getElementsByClassName(rowID)
-      usersRow[0].remove()
+      userRow.remove()
       localStorage.clear()
       deleteButton.classList.add("incorrect")
       editButton.classList.add("incorrect")

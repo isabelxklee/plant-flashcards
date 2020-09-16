@@ -39,7 +39,7 @@ function formAction(playersArr) {
     })
     .then(r => r.json())
     .then((player) => {
-      if (player.id) {
+      if (player) {
         loadScoreboard(playersArr)
         addNewPlayer(player)
       }

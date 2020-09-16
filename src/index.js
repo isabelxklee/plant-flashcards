@@ -19,10 +19,10 @@ function learningModeLinkAction() {
 function loadLearningMode(plantsArr) {
   document.body.innerHTML = learningMode
   renderPageElements(plantsArr)
+  loadFront(plantsArr[0])
   learningModeLinkAction()
   quizTimeLinkAction()
   scoreboardLinkAction()
-  loadFront(plantsArr[0])
 }
 
 function renderPageElements(plantsArr) {
@@ -55,8 +55,8 @@ function renderPageElements(plantsArr) {
 
     let pageContainer = document.querySelector(".card-intro")
     if (pageContainer.querySelector("#plant-info")) {
-        let plantInfo = pageContainer.querySelector("#plant-info")
-        plantInfo.innerHTML = ""
+      let plantInfo = pageContainer.querySelector("#plant-info")
+      plantInfo.innerHTML = ""
     }
 
     loadFront(plantsArr[indexPosition])

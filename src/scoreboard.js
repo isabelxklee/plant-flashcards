@@ -108,7 +108,7 @@ function findUsersCell() {
 
   if (localStorage.username) {
     Array.from(tableCells).forEach((cell) => { 
-      if (cell.innerText === currentUser) {
+      if (cell.innerText === localStorage.username) {
         usersCell = cell
         rowID = usersCell.className
       }
@@ -136,7 +136,7 @@ function toggleEditForm() {
     editPlayer = !editPlayer
     if (editPlayer) {
       editPlayerForm.style.display = "grid"
-      usernameInput.value = currentUser
+      usernameInput.value = localStorage.username
     } else {
       editPlayerForm.style.display = "none"
     }

@@ -169,11 +169,11 @@ function editUsername(playersArr) {
     .then(r => r.json())
     .then((response) => {
       if (response.id) {
+        localStorage.setItem('username', usernameInput.value)  
         let rowID = findUsersCell()[0]
         let usersRow = scoreTable.getElementsByClassName(rowID)
         let usersCell = usersRow[1]
         usersCell.innerText = usernameInput.value
-        localStorage.setItem('username', usernameInput.value)  
         editPlayerForm.style.display = "none"              
       }
       event.target.reset()

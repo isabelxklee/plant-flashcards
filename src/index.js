@@ -18,11 +18,11 @@ function learningModeLinkAction() {
 
 function loadLearningMode(plantsArr) {
   document.body.innerHTML = learningMode
+  renderPageElements(plantsArr)
   learningModeLinkAction()
   quizTimeLinkAction()
   scoreboardLinkAction()
   loadFront(plantsArr[0])
-  renderPageElements(plantsArr)
 }
 
 function renderPageElements(plantsArr) {

@@ -77,6 +77,7 @@ function findTableRow() {
       usersRow = row
     }
   })
+
   return usersRow
 }
 
@@ -164,9 +165,9 @@ function deleteUsername(playersArr) {
   let pageContainer = document.querySelector(".page-container")
   let deleteButton = pageContainer.querySelector("#danger")
   let editButton = pageContainer.querySelector("#edit")
+  let scoreTable = document.getElementById("scoretable")
 
   let singlePlayerURL = `${playersURL}/${findCurrentPlayer(playersArr)}`
-  let usersRow = findTableRow()
 
   if (localStorage.length === 0) {
     deleteButton.classList.add("incorrect")
@@ -180,10 +181,12 @@ function deleteUsername(playersArr) {
     })
     .then(r => r.json())
     .then(() => {
-      usersRow.remove()
+      let rowID = findUsersCell()[0]
+      let usersRow = scoreTable.getElementsByClassName(rowID)
+      usersRow[0].remove()
       localStorage.clear()
       deleteButton.classList.add("incorrect")
       editButton.classList.add("incorrect")
-      })
     })
+  })
 }

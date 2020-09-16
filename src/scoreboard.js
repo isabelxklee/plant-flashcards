@@ -54,18 +54,16 @@ function loadScoreboard(playersArr) {
   })
 }
 
-function findSinglePlayerURL(playersArr) {
-  let playerID = -1
-  let singlePlayerURL = ``
+function findCurrentPlayer(playersArr) {
+  let currentID = 0
 
   playersArr.forEach((player) => {
-    if (player.username === currentUser) {
-      playerID = player.id
-      singlePlayerURL = `${playersURL}/${playerID}`
+    if (player.username === localStorage.username) {
+      currentID = player.id
     }
   })
 
-  return singlePlayerURL
+  return currentID
 }
 
 function findTableRow() {
@@ -76,7 +74,7 @@ function findTableRow() {
 
   Array.from(tableRows).forEach((row) => {
     if (row.className === rowID) {
-        usersRow = row
+      usersRow = row
     }
   })
   return usersRow
@@ -133,8 +131,7 @@ function editUsername(playersArr) {
   toggleEditForm()
   editPlayerForm.style.display = "none"
 
-  // let singlePlayer = findSinglePlayerURL(playersArr)
-  let singlePlayerURL = `${playersURL}/9`
+  let singlePlayerURL = `${playersURL}/${findCurrentPlayer(playersArr)}`
 
   editPlayerForm.addEventListener("submit", (event) => {
     event.preventDefault()
@@ -168,7 +165,7 @@ function deleteUsername(playersArr) {
   let deleteButton = pageContainer.querySelector("#danger")
   let editButton = pageContainer.querySelector("#edit")
 
-  let singlePlayer = findSinglePlayerURL(playersArr)
+  let singlePlayerURL = `${playersURL}/${findCurrentPlayer(playersArr)}`
   let usersRow = findTableRow()
 
   if (localStorage.length === 0) {
@@ -178,7 +175,7 @@ function deleteUsername(playersArr) {
   }
 
   deleteButton.addEventListener("click", () => {
-    fetch(singlePlayer, {
+    fetch(singlePlayerURL, {
       method: "DELETE"
     })
     .then(r => r.json())

@@ -21,6 +21,7 @@ function createPlayerAction(playersArr) {
 function formAction(playersArr) {
   let newUserForm = document.querySelector(".create-user")
   let usernameInput = document.getElementById("username-input")
+  usernameInput.setAttribute("autocomplete","off")
 
   newUserForm.addEventListener("submit", (event) => {
     event.preventDefault()

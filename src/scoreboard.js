@@ -6,7 +6,6 @@ function renderPlayers() {
     deleteUsername(playersArr)
     learningModeLinkAction()
     quizTimeLinkAction()
-    console.log(playersArr)
   })
 }
 
@@ -55,9 +54,7 @@ function loadScoreboard(playersArr) {
   })
 }
 
-function addNewPlayer(player, playersArr) {
-  console.log(player)
-
+function addNewPlayer(player) {
   let scoreTable = document.getElementById("scoretable")
   let ranking = 5
 
@@ -127,6 +124,7 @@ function toggleEditForm() {
   let editButton = pageContainer.querySelector("#edit")
   let editPlayerForm = pageContainer.querySelector(".edit-user")
   let usernameInput = editPlayerForm.querySelector("input")
+  usernameInput.setAttribute("autocomplete","off")
 
   if (localStorage.length === 0) {
     editButton.classList.add("incorrect")
@@ -171,11 +169,11 @@ function editUsername(playersArr) {
     .then(r => r.json())
     .then((response) => {
       if (response.id) {
-        localStorage.setItem('username', usernameInput.value)  
         let rowID = findUsersCell()[0]
         let usersRow = scoreTable.getElementsByClassName(rowID)
         let usersCell = usersRow[1]
         usersCell.innerText = usernameInput.value
+        localStorage.setItem('username', usernameInput.value)  
         editPlayerForm.style.display = "none"              
       }
       event.target.reset()

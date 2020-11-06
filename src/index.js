@@ -29,12 +29,8 @@ function renderPageElements(plantsArr) {
   let plantCount = document.getElementById("plant-count")
   plantCount.innerText = `1 / ${plantsArr.length} plants`
 
-  let takeQuizButton = document.getElementById("take-quiz")
-  takeQuizButton.style.display = "none"
-
   let backButton = document.getElementById("back-button")
   let nextButton = document.getElementById("next-button")
-
   let indexPosition = 0
 
   if (indexPosition === 0) {
@@ -47,8 +43,9 @@ function renderPageElements(plantsArr) {
     let lastPlant = plantsArr.length - 2
 
     if (indexPosition === lastPlant) {
-      nextButton.classList.add("incorrect")
-      redirectToQuiz()
+      nextButton.innerText = "Take plant quiz"
+      nextButton.id = "take-quiz"
+      nextButton.onclick = redirectToQuiz()
     }
 
     indexPosition = indexPosition + 1
@@ -73,6 +70,11 @@ function renderPageElements(plantsArr) {
 
     if (indexPosition === 0) {
       backButton.classList.add("incorrect")   
+    }
+
+    if (indexPosition < plantsArr.length) {
+      nextButton.innerText = "Next"
+      nextButton.id = "next-button"
     }
   })
 }

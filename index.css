@@ -4,6 +4,19 @@ body {
   text-align: center;
 }
 
+.footer {
+  overflow: hidden;
+  background-color: white;
+  padding: 20px;
+  margin-top: 100px;
+}
+
+.footer a {
+  text-decoration: none;
+  color:  rgb(43, 43, 43);
+  font-weight: 600;
+}
+
 .header {
   overflow: hidden;
   background-color: rgb(43, 43, 43);
@@ -11,22 +24,13 @@ body {
 }
 
 .header a {
-float: left;
-color: white;
-text-align: center;
-padding: 4px 20px;
-text-decoration: none;
-font-size: 18px; 
-line-height: 25px;
-}
-
-.header a.logo {
-  cursor: default;
-}
-
-a#site-info {
-  font-size: 14px;
-  float: right;
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 4px 20px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
 }
 
 div.btn-group {
@@ -273,4 +277,82 @@ tr#headers {
 .number-one {
   font-weight: 700;
   font-size: 18px;
+}
+
+
+/* mobile styles */
+@media only screen and (max-width: 892px) {
+  div.card-intro {
+    margin-top: 0;
+  }
+
+  #flashcard-navigation {
+    position: fixed;
+    bottom: 0;
+    background-color:rgb(43, 43, 43);
+    width: 100%;
+    color: white;
+    padding: 20px 0px;
+  }
+
+  p#plant-count {
+    margin: 0;
+  }
+
+  div#flashcards.card-intro {
+    display: inline-block;
+    padding: 20px 20px 50px 20px;
+  }
+
+  div#plant-info.card {
+    margin: 0;
+  }
+
+  div.card.flashcard {
+    margin: 10px 0px;
+  }
+
+  .card {
+    height: 100%;
+  }
+
+  p.flip-card-back.rating {
+    padding-top: 20px;
+  }
+
+  p.flip-card-back.content {
+    margin: 10px 10px 40px 10px;
+  }
+
+  h2.flip-card-front.title {
+    padding: 40px 0px;
+  }
+
+  div.btn-group {
+    display: inline-block;
+  }
+
+  button#take-quiz.navigation {
+    background-color: rgb(43, 43, 43);
+    border: 2px solid white;
+  }
+
+  .header a, .header {
+    float: none;
+    text-align: left;
+  }
+
+  .header {
+    display: grid;
+  }
+
+  .header a {
+    padding: 4px 0px;
+    font-size: 16px;
+  }
+
+  a#site-info {
+    float: none;
+    font-size: 16px;
+  }
 }

@@ -118,7 +118,6 @@ function answerOptionLoop(singleQuestion, questionsArr) {
 
 function redirectToQuiz() {
   let takeQuizButton = document.getElementById("take-quiz")
-  takeQuizButton.style.display = "block"
 
   takeQuizButton.addEventListener("click", () => {
     fetch(questionsURL)

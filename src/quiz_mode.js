@@ -70,9 +70,12 @@ function answerOptionLoop(singleQuestion, questionsArr) {
   singleQuestion.answers.forEach((answer) => {    
     let answerButton = document.createElement("button")
     answerButton.innerText = answer.content
+    answerButton.className = "option"
     answerOptions.append(answerButton)
 
     answerButton.addEventListener("click", (event) => {
+      console.log(answerOptions.children.length)
+
       if (answer.correct_answer === true) {
         answerButton.classList.toggle("correct")
 
@@ -80,12 +83,20 @@ function answerOptionLoop(singleQuestion, questionsArr) {
 
         scoreCount = scoreCount + 50
         scoreKeeper.innerText = `Score: ${scoreCount}`
-
-        nextQuestion.classList.remove("incorrect")
       } else {
         answerStatus.innerText = "Wrong answer 😔"
-        answerButton.classList.toggle("incorrect")
+        answerButton.classList.toggle("wrong-answer")
       }
+
+      let allAnswerButtons = answerOptions.children
+      let i = 0
+
+      for (i = 0; i < allAnswerButtons.length; i++) {
+        allAnswerButtons[i].classList.add("incorrect")
+        console.log(allAnswerButtons[i])
+      }
+
+      nextQuestion.classList.remove("incorrect")
     }) // end of answer button event listener
   }) // end of for each statement
 

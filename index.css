@@ -101,9 +101,13 @@ div.answer-options button {
 }
 
 .incorrect {
-  opacity: 0.25;
+  opacity: 0.8;
   cursor: not-allowed;
   pointer-events:none;
+}
+
+div.answer-options button.wrong-answer {
+  background-color: rgb(125, 44, 0);
 }
 
 div.answer-options button.correct {
